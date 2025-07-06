@@ -3,6 +3,8 @@ import mysql.connector
 from mysql.connector import Error, errorcode
 import os
 from dotenv import load_dotenv
+import pandas as pd
+
 
 
 # Load the configuration data for the db connection
@@ -84,7 +86,43 @@ def create_table(connection):
         print(f"Error creating table: {err}")
         return False
     finally:
-        curosor.close()
+        my_cursor.close()
+
+
+def insert_data(connection, data):
+    """This is a function to insert data to the table""" 
+    # Initialize the cursor to enable db operations
+    my_cursor = connection.cursor()
+
+    # Read the data from csv file using pandas
+    df = pd.read_csv(data)
+
+    # Convert the age to a floating datatype to match the table column "age" datatype
+    df['age'] = df['age'].astype(float)
+
+    # Loop through the dataframe with a tuple iterable which increases the efficiency
+    for row in df.itertuples(index=False):
+        try:
+            my_cursor.execute("INSERT INTO user_data(name, email, age) VALUES (%s, %s, %s)", (row.name, row.email, row.age))
+            print("Data has been inserted successfully")
+            my_cursor.commit()
+        except Error as err:
+            print(f"This is an error: {err}")
+        finally:
+            # Close the cursor
+            my_cursor.close()
+       
+            
     
+    
+
+connection = connect_db()
+data = insert_data(connection, 'user_data.csv')
+
+    
+
+    
+
+
 
     
