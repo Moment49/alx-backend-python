@@ -18,7 +18,7 @@ def connect_db():
         password= os.getenv('DB_PASSWORD'),
         host = os.getenv("DB_HOST")
         )
-        print("Connection is succesfull")
+        print("Connection is succesful")
         return connection
 
     except Error as err:
@@ -52,8 +52,8 @@ def create_database(connection):
 
 def connect_to_prodev():
     """"This function is to connect to the ALX_prodev database"""
+    database_name =  os.getenv("DATABASE_NAME")
     try:
-        database_name = "ALX_prodev"
         connection = mysql.connector.connect(
             user=os.getenv("DB_USER"),
             password = os.getenv("DB_PASSWORD"),
@@ -77,7 +77,8 @@ def create_table(connection):
             email VARCHAR(255) UNIQUE NOT NULL,
             age DECIMAL(3, 0) NOT NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            INDEX idx_email (email)
             )
             """
         )
@@ -91,33 +92,36 @@ def create_table(connection):
 
 def insert_data(connection, data):
     """This is a function to insert data to the table""" 
+    database_name = os.getenv("DATABASE_NAME")
     # Initialize the cursor to enable db operations
-    my_cursor = connection.cursor()
 
-    # Read the data from csv file using pandas
-    df = pd.read_csv(data)
+    try:
+        my_cursor = connection.cursor()
+        # Read the data from csv file using pandas
+        df = pd.read_csv(data)
+        # Convert the age to a floating datatype to match the table column "age" datatype
+        df['age'] = df['age'].astype(float)
 
-    # Convert the age to a floating datatype to match the table column "age" datatype
-    df['age'] = df['age'].astype(float)
+        # Loop through the dataframe with a tuple iterable which increases the efficiency
+        for row in df.itertuples(index=False):
+            try:
+                my_cursor.execute("INSERT INTO user_data(name, email, age) VALUES (%s, %s, %s)", (row.name, row.email, row.age))
+                print("Data has been inserted successfully") 
 
-    # Loop through the dataframe with a tuple iterable which increases the efficiency
-    for row in df.itertuples(index=False):
-        try:
-            my_cursor.execute("INSERT INTO user_data(name, email, age) VALUES (%s, %s, %s)", (row.name, row.email, row.age))
-            print("Data has been inserted successfully")
-            my_cursor.commit()
-        except Error as err:
-            print(f"This is an error: {err}")
-        finally:
-            # Close the cursor
-            my_cursor.close()
-       
+            except Error as err:
+                print(f"Unable to Insert data into the database {database_name}: {err}") 
+
+        # commit all changes
+        connection.commit()
+    except FileNotFoundError as err:
+        print(f"Unable to find csv fiie {data}: {err}") 
+    
+    finally:
+        # Close the cursor
+        my_cursor.close()
+                    
             
     
-    
-
-connection = connect_db()
-data = insert_data(connection, 'user_data.csv')
 
     
 
