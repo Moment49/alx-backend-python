@@ -18,7 +18,6 @@ def connect_db():
         password= os.getenv('DB_PASSWORD'),
         host = os.getenv("DB_HOST")
         )
-        print("Connection is succesful")
         return connection
 
     except Error as err:
@@ -27,11 +26,6 @@ def connect_db():
         else:
             print(err)
 
-
-    
-# Call the function and pass the data
-connection = connect_db()
-print(connection)
 
 # Create the database
 def create_database(connection):
@@ -93,13 +87,12 @@ def create_table(connection):
 def insert_data(connection, data):
     """This is a function to insert data to the table""" 
     database_name = os.getenv("DATABASE_NAME")
-    # Initialize the cursor to enable db operations
-
     try:
+        # Initialize the cursor to enable db operations
         my_cursor = connection.cursor()
-        # Read the data from csv file using pandas
+
+        # Read the data from csv file using pandas and convert datatype for age
         df = pd.read_csv(data)
-        # Convert the age to a floating datatype to match the table column "age" datatype
         df['age'] = df['age'].astype(float)
 
         # Loop through the dataframe with a tuple iterable which increases the efficiency
