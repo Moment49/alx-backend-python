@@ -1,13 +1,31 @@
 #!/usr/bin/env python3
-seed = __import__('seed')
 
-connection  = seed.connect_to_prodev()
+from mysql.connector import Error
+import seed
+
 
 def stream_users():
-    # Establish connection to database
-    if connection:
-        my_cursor = connection.cursor()
+    """"Generator function that streams users from the database."""
+    try:
+        # Establish connection to database
+        connection  = seed.connect_to_prodev()
+        if connection.is_connected():
+            my_cursor = connection.cursor(dictionary=True)
+            # Execute the query to fetch all user data
+            my_cursor.execute("SELECT * FROM user_data")
+            # Fetch rows one by one
+            result = my_cursor.fetchall()
+            for row in result:
+                yield row
+                print(row)
+        
+
+            else:
+                raise Error("Failed to connect to the database")
+        
+    except Error as err:
+        print(f"Error: {err}")
+                
 
 
 
-stream_users()
