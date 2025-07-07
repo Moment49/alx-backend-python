@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 
 from mysql.connector import Error
-import seed
-
+from seed import connect_to_prodev
 
 def stream_users():
     """"Generator function that streams users from the database."""
     try:
         # Establish connection to database
-        connection  = seed.connect_to_prodev()
+        connection  = connect_to_prodev()
         if connection.is_connected():
             my_cursor = connection.cursor(dictionary=True)
             # Execute the query to fetch all user data
@@ -17,14 +16,12 @@ def stream_users():
             result = my_cursor.fetchall()
             for row in result:
                 yield row
-                print(row)
-        
-
             else:
                 raise Error("Failed to connect to the database")
         
     except Error as err:
         print(f"Error: {err}")
+
                 
 
 
