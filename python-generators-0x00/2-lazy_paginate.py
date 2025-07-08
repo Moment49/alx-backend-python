@@ -27,10 +27,10 @@ def lazy_pagination(page_size):
             print("All paginated data has been returned")
             break
 
-        offset += 1
+        offset += page_size
         yield rows
     end_time = time.time()
-    print(f"pagination time: {round(end_time - start_time, 3)}")
+    print(f"pagination time: {round(end_time - start_time, 3)}secs")
 
 
 for row in lazy_pagination(500):
