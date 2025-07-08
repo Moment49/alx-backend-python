@@ -43,6 +43,3 @@ if __name__ == "__main__":
     # Print Average Age of users returned
     AVG_AGE = aggregate_users_avg()
     print(f"Average age of users: {AVG_AGE}")
-
-
-
