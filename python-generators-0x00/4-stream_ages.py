@@ -5,7 +5,7 @@ seed = __import__('seed')
 import time
 
 
-def stream_users_ages():
+def stream_user_ages():
     """Generator function that streams users from the database and filters by age."""
     try:
         connection = seed.connect_to_prodev()
@@ -26,7 +26,7 @@ def aggregate_users_avg():
     """A function to get the sum of users avg age"""
     sum_ages = 0
     count = 0
-    ages = stream_users_ages()
+    ages = stream_user_ages()
     for age in ages:
         sum_ages += age
         count += 1
@@ -36,7 +36,7 @@ def aggregate_users_avg():
 
 if __name__ == "__main__":
     # List of user ages returned from the data stream
-    user_ages = stream_users_ages()
+    user_ages = stream_user_ages()
     for user_age in user_ages:
         print(f"Users age: {user_age}")
     
