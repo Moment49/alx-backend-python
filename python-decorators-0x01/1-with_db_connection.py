@@ -8,15 +8,17 @@ import functools
 # decorator with_db_connection that opens a database connection, passes it to the function and closes it afterword
 
 def with_db_connection(func):
-    """ your code goes here""" 
+    """ Decorator that opens db connection passes to the func and closes afterwards""" 
+
+    functools.wraps(func)
     def wrapper_db_conn(*args, **kwargs):
         database_name = 'users.db'
         try:
             connect = sqlite3.connect(f"{database_name}")
-            # pass it to the function to establish the connection and
+            # pass it to the function to establish the connection and close the connection
             result = func(connect, *args, **kwargs)
             connect.close()
-            print("Connected to the database succesfully")
+            print(f"Connected to the database `{database_name}` succesfully and passed the db connection to the function: {func.__name__}")
             return result
         except Exception as e:
             print(f"Error connecting to the database: {database_name}. Please check the database name!!!")
