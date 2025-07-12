@@ -13,15 +13,19 @@ def with_db_connection(func):
     functools.wraps(func)
     def wrapper_db_conn(*args, **kwargs):
         database_name = 'users.db'
+        connect = None
         try:
             connect = sqlite3.connect(f"{database_name}")
             # pass it to the function to establish the connection and close the connection
             result = func(connect, *args, **kwargs)
-            connect.close()
             print(f"Connected to the database `{database_name}` succesfully and passed the db connection to the function: {func.__name__}")
             return result
         except Exception as e:
-            print(f"Error connecting to the database: {database_name}. Please check the database name!!!")
+            print(f"Database Error occurred: {e}")
+            return None
+        
+        finally:
+            connect.close()
 
     return wrapper_db_conn
 
