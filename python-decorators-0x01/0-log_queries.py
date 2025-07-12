@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import sqlite3
 import functools
+from datetime import datetime
 
 
 log_file = 'log_queries.txt'
@@ -10,8 +11,8 @@ def log_queries(func):
     """This is a decorator function to log queries to a file"""
     @functools.wraps(func)
     def wrapper_log_queries(*args, **kwargs):
-        print(kwargs)
         # Open the file and log the query been executed before excuting it
+        start_time = datetime.now()
         log_query = kwargs['query']
         # Write to the file
         with open(log_file, 'a') as file_obj:
@@ -19,6 +20,9 @@ def log_queries(func):
         print(f"The function name `{func.__name__}` executed the log query: {log_query}")
         # Excutes the query and returns the result
         result = func(*args, **kwargs)
+        end_time = datetime.now()
+
+        print(f"Duration of logging the query to a file and returning the result: {(end_time - start_time).total_seconds()}secs")
         return result
     return wrapper_log_queries
 
