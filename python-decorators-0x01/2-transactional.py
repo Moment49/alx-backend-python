@@ -40,11 +40,18 @@ def transactional(func):
             # get the connection from the args
             conn = args[0]
             result = func(*args, **kwargs)
-            conn.commit()
-            print(f"Email address updated sucessfully:`{kwargs['new_email']}`")
+        
+            if result > 0:
+                conn.commit()
+                print(f"Email address updated sucessfully:`{kwargs['new_email']}`")
+            
+            if result == 0:
+                conn.rollback()
+                raise Exception("No rows were affected. Rolling back transaction.")
+            
         except Exception as e:
             conn.rollback()
-            print(f"An error occured: {e}")
+            print(f"Transaction failed and rolled back: {e}")
 
         return result
 
@@ -56,7 +63,7 @@ def transactional(func):
 def update_user_email(conn, user_id, new_email): 
     cursor = conn.cursor() 
     cursor.execute("UPDATE users SET email = ? WHERE id = ?", (new_email, user_id)) 
-    
+    return cursor.rowcount
 
 #### Update user's email with automatic transaction handling 
-update_user_email(user_id=7, new_email='Crawford_Cartwrigh@hotmail.com')
+update_user_email(user_id=1, new_email='Crawford_Cartwright@hotmail.com')
