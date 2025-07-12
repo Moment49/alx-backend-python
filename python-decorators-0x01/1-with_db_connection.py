@@ -10,7 +10,7 @@ import functools
 def with_db_connection(func):
     """ Decorator that opens db connection passes to the func and closes afterwards""" 
 
-    functools.wraps(func)
+    @functools.wraps(func)
     def wrapper_db_conn(*args, **kwargs):
         database_name = 'users.db'
         connect = None
@@ -22,10 +22,10 @@ def with_db_connection(func):
             return result
         except Exception as e:
             print(f"Database Error occurred: {e}")
-            return None
         
         finally:
-            connect.close()
+            if connect:
+                connect.close()
 
     return wrapper_db_conn
 
@@ -37,4 +37,4 @@ def get_user_by_id(conn, user_id):
 
 #### Fetch user by ID with automatic connection handling 
 user = get_user_by_id(user_id=1)
-print(user)
+# print(user)
