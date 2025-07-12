@@ -96,9 +96,9 @@ def insert_data(connection, data):
         df['age'] = df['age'].astype(float)
 
         # Loop through the dataframe with a tuple iterable which increases the efficiency
-        for row in df.itertuples(index=False):
+        for row in df.itertuples(index=False, name=None):
             try:
-                my_cursor.execute("INSERT INTO user_data(name, email, age) VALUES (%s, %s, %s)", (row.name, row.email, row.age))
+                my_cursor.execute("INSERT INTO user_data(name, email, age) VALUES (%s, %s, %s)", row)
                 print("Data has been inserted successfully") 
 
             except Error as err:
