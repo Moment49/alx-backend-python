@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+import mysql.connector
+import os
+
+print("Using:", mysql.connector.__file__)
+print("Version:", mysql.connector.__version__)
+
 seed = __import__('seed')
 
 
