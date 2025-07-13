@@ -24,7 +24,7 @@ def retry_on_failure(retries, delay):
                 # return the result of the database execution
                 return result
             except sqlite3.Error as e:
-                for _ in range(attempts, retries):
+                for _ in range(retries):
                     # Loop to retry the sql execution function
                     try:
                         result = func(*args, **kwargs)
@@ -51,6 +51,5 @@ def fetch_users_with_retry(conn):
     return cursor.fetchall()
 
 #### attempt to fetch users with automatic retry on failure
-
 users = fetch_users_with_retry()
 print(users)
