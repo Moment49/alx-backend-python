@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-from contextlib import contextmanager
-# import mysql.connector 
-# from mysql.connector import Error, errorcode
+
 import sqlite3
 import os
 
