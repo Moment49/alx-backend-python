@@ -8,8 +8,6 @@ with_db_connection = __import__('1-with_db_connection')
 
 with_db_connection = with_db_connection.with_db_connection
 
-# Complete the script below by implementing a retry_on_failure
-# (retries=3, delay=2) decorator that retries the function of a certain number of times if it raises an exception
 
 #### paste your with_db_decorator here
 def retry_on_failure(retries, delay):
@@ -26,7 +24,7 @@ def retry_on_failure(retries, delay):
                 # return the result of the database execution
                 return result
             except sqlite3.Error as e:
-                for _ in range(retries):
+                for _ in range(attempts, retries):
                     # Loop to retry the sql execution function
                     try:
                         result = func(*args, **kwargs)
@@ -46,10 +44,10 @@ def retry_on_failure(retries, delay):
     
 
 @with_db_connection
-@retry_on_failure(retries=6, delay=2)
+@retry_on_failure(retries=3, delay=2)
 def fetch_users_with_retry(conn):
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM users")
+    cursor.execute("SELECT * FROM user")
     return cursor.fetchall()
 
 #### attempt to fetch users with automatic retry on failure
