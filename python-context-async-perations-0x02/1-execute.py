@@ -32,7 +32,6 @@ class ExecuteQuery:
 # This is the main program execution
 if __name__ == '__main__':
     # # Context manager tha changes the current working directory to get the users db
-   
     with ExecuteQuery("SELECT * FROM users WHERE age > ?") as query_excute:
         users = query_excute.fetchall()
         print(users)
