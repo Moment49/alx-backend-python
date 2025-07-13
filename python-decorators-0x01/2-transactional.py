@@ -2,12 +2,6 @@
 import sqlite3 
 import functools
 
-# with_db_connection = __import__('1-with_db_connection')
-
-# with_db_connection = with_db_connection.with_db_connection
-
-# Complete the script below by writing a decorator transactional(func) that ensures a function running a database operation 
-# is wrapped inside a transaction.If the function raises an error, rollback; otherwise commit the transaction.
 
 def with_db_connection(func):
     """ Decorator that opens db connection passes to the func and closes afterwards""" 
