@@ -47,7 +47,10 @@ class TestAccessNestedMap(unittest.TestCase):
         """
         with self.assertRaises(KeyError) as context:
             access_nested_map(nested_map, path)
-        self.assertEqual(str(context.exception), f"'{expected_key}'")
+        self.assertEqual(
+            str(context.exception),
+            f"'{expected_key}'"
+        )
 
 
 class TestGetJson(unittest.TestCase):
@@ -62,7 +65,7 @@ class TestGetJson(unittest.TestCase):
     ])
     @patch('requests.get')
     def test_get_json(self, test_url: str, test_payload: Dict,
-                     mock_get: Mock) -> None:
+                      mock_get: Mock) -> None:
         """
         Test that get_json returns the expected payload without making actual
         HTTP requests.
