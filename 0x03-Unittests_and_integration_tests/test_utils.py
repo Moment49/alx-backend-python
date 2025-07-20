@@ -4,8 +4,6 @@ from utils import access_nested_map, get_json, memoize, Dict
 from parameterized import parameterized, parameterized_class
 from unittest.mock import patch, Mock
 
-
-
 class TestAccessNestedMap(unittest.TestCase):
     """
     Test class for access_nested_map function.
@@ -45,14 +43,11 @@ class TestAccessNestedMap(unittest.TestCase):
             access_nested_map(nested_map, path)
         self.assertEqual(str(context.exception), f"'{expected_key}'")
 
-
-
 class TestGetJson(unittest.TestCase):
     """
     Test class for the get_json function.
     Ensures get_json returns the expected payload using mocked HTTP requests.
     """
-
     @parameterized.expand([
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False}),
@@ -61,11 +56,6 @@ class TestGetJson(unittest.TestCase):
     def test_get_json(self, test_url: str, test_payload: Dict, mock_get: Mock) -> None:
         """
         Test that get_json returns the expected payload without making actual HTTP requests.
-
-        Args:
-            test_url (str): The URL to fetch JSON from.
-            test_payload (Dict): The expected JSON payload.
-            mock_get (Mock): Mocked requests.get function.
         """
         mock_response = Mock()
         mock_response.json.return_value = test_payload
@@ -102,3 +92,4 @@ class TestMemoize(unittest.TestCase):
             self.assertEqual(result1, 42)
             self.assertEqual(result2, 42)
             mock_method.assert_called_once()
+            
