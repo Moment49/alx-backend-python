@@ -5,9 +5,10 @@ parameterized,mock to test organization data retrieval and repository
 listing from the GitHub API client.
 """
 import unittest
-from unittest.mock import patch, PropertyMock
-from parameterized import parameterized
-
+from unittest.mock import patch, PropertyMock, MagicMock
+from parameterized import parameterized, parameterized_class
+import requests
+from fixtures import fixtures 
 from client import GithubOrgClient
 
 
@@ -99,3 +100,36 @@ class TestGithubOrgClient(unittest.TestCase):
         client = GithubOrgClient("test_org")
         result = client.has_license(repo, license_key)
         self.assertEqual(result, expected)
+
+
+@parameterized_class(fixtures)
+class TestIntegrationGithubOrgClient(unittest.TestCase):
+    """Integration test for GithubOrgClient.public_repos method"""
+
+    @classmethod
+    def setUpClass(cls):
+        """Patch only external requests for integration test"""
+        cls.get_patcher = patch('client.get_json', side_effect=[
+            cls.org_payload,    # First call: org data
+            cls.repos_payload   # Second call: repos list
+        ])
+        cls.mock_get = cls.get_patcher.start()
+
+        # Instantiate the client using the org's login
+        cls.client = GithubOrgClient(cls.org_payload["login"])
+
+    @classmethod
+    def tearDownClass(cls):
+        """Stop patched get_json"""
+        cls.get_patcher.stop()
+
+    def test_public_repos(self):
+        """Test public_repos returns expected repository names"""
+        self.assertEqual(self.client.public_repos(), self.expected_repos)
+
+    def test_public_repos_with_license(self):
+        """Test public_repos with license filtering"""
+        self.assertEqual(
+            self.client.public_repos(license="apache-2.0"),
+            self.apache2_repos
+        )
