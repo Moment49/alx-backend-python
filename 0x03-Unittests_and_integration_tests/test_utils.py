@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
 Unit tests for utility functions in utils.py, including access_nested_map,
-get_json, and memoize. This module uses unittest and parameterized for test cases
-and ensures all functions are properly tested.
+get_json, and memoize. This module uses unittest and parameterized for test
+cases and ensures all functions are properly tested.
 """
 import unittest
 from utils import access_nested_map, get_json, memoize, Dict
