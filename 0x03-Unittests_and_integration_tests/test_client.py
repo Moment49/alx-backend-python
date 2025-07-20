@@ -59,34 +59,37 @@ class TestGithubOrgClient(unittest.TestCase):
 
 @parameterized_class(fixtures)
 class TestIntegrationGithubOrgClient(unittest.TestCase):
-    """Integration tests for GithubOrgClient.public_repos"""
+    """Integration test class for GithubOrgClient.public_repos"""
 
     @classmethod
     def setUpClass(cls):
-        """Patch requests.get and set up mock responses"""
-        cls.get_patcher = patch('requests.get')
+        """Set up class-wide mock for requests.get"""
+        org_url = "https://api.github.com/orgs/{}".format(cls.org_payload["login"])
+        repos_url = cls.org_payload["repos_url"]
+
+        cls.get_patcher = patch("requests.get")
         cls.mock_get = cls.get_patcher.start()
 
-        # Configure the mock to return a mock response with .json() method
-        cls.mock_get.side_effect = [
-            MagicMock(**{"json.return_value": cls.org_payload}),
-            MagicMock(**{"json.return_value": cls.repos_payload}),
-        ]
-
-        cls.client = GithubOrgClient(cls.org_payload["login"])
+        # Side effects: return different responses based on URL
+        cls.mock_get.side_effect = lambda url: unittest.mock.Mock(
+            json=lambda: (
+                cls.org_payload if url == org_url
+                else cls.repos_payload if url == repos_url
+                else None
+            )
+        )
 
     @classmethod
     def tearDownClass(cls):
-        """Stop patching requests.get"""
+        """Stop patcher"""
         cls.get_patcher.stop()
 
     def test_public_repos(self):
-        """Test public_repos returns expected repository names"""
-        self.assertEqual(self.client.public_repos(), self.expected_repos)
+        """Test that public_repos returns correct list"""
+        client = GithubOrgClient(self.org_payload["login"])
+        self.assertEqual(client.public_repos(), self.expected_repos)
 
     def test_public_repos_with_license(self):
-        """Test public_repos with license filtering"""
-        self.assertEqual(
-            self.client.public_repos(license="apache-2.0"),
-            self.apache2_repos
-        )
+        """Test that public_repos returns only Apache-2.0 licensed repos"""
+        client = GithubOrgClient(self.org_payload["login"])
+        self.assertEqual(client.public_repos(license="apache-2.0"), self.apache2_repos)
