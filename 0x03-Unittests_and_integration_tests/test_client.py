@@ -1,4 +1,37 @@
 #!/usr/bin/env python3
+
+from fixtures import fixtures
+from parameterized import parameterized_class
+import unittest
+from utils import access_nested_map, get_json, memoize, Dict
+from parameterized import parameterized, parameterized_class
+from unittest.mock import patch, Mock
+
+@parameterized_class(('org_payload', 'repos_payload', 'expected_repos', 'apache2_repos'), fixtures)
+class TestIntegrationGithubOrgClient(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.get_patcher = patch('requests.get')
+        cls.mock_get = cls.get_patcher.start()
+
+        def side_effect_func(url):
+            mock_response = unittest.mock.Mock()
+            org_url = GithubOrgClient.ORG_URL.format(org=cls.org_payload["login"])
+            repos_url = cls.org_payload["repos_url"]
+            if url == org_url:
+                mock_response.json.return_value = cls.org_payload
+            elif url == repos_url:
+                mock_response.json.return_value = cls.repos_payload
+            else:
+                mock_response.json.return_value = {}
+            return mock_response
+
+        cls.mock_get.side_effect = side_effect_func
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.get_patcher.stop()
+#!/usr/bin/env python3
 # Test file for client.GithubOrgClient
 import unittest
 from unittest.mock import patch
