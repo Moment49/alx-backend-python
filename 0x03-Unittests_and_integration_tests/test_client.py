@@ -4,9 +4,7 @@ import unittest
 from unittest.mock import patch, PropertyMock, Mock
 from parameterized import parameterized, parameterized_class
 from client import GithubOrgClient
-import fixtures as test_fixtures  # Import the fixtures module
-
-fixtures = test_fixtures.fixtures
+from fixtures import fixtures  # Import the fixtures list directly
 
 
 class TestGithubOrgClient(unittest.TestCase):
