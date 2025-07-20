@@ -1,16 +1,13 @@
 #!/usr/bin/env python3
 """
-Unit tests for utility functions in utils.py, including access_nested_map, get_json, and memoize.
-This module uses unittest and parameterized for test cases and ensures all functions
-are properly tested.
+Unit tests for utility functions in utils.py, including access_nested_map, get_json,
+and memoize. This module uses unittest and parameterized for test cases and ensures
+all functions are properly tested.
 """
 import unittest
 from utils import access_nested_map, get_json, memoize, Dict
 from parameterized import parameterized, parameterized_class
 from unittest.mock import patch, Mock
-
-  
-
 class TestAccessNestedMap(unittest.TestCase):
     """
     Test class for access_nested_map function.
@@ -50,6 +47,8 @@ class TestAccessNestedMap(unittest.TestCase):
             access_nested_map(nested_map, path)
         self.assertEqual(str(context.exception), f"'{expected_key}'")
 
+  
+
 class TestGetJson(unittest.TestCase):
     """
     Test class for the get_json function.
@@ -62,7 +61,7 @@ class TestGetJson(unittest.TestCase):
     ])
     @patch('requests.get')
     def test_get_json(self, test_url: str, test_payload: Dict,
-                     mock_get: Mock) -> None:
+                      mock_get: Mock) -> None:
         """
         Test that get_json returns the expected payload without making actual
         HTTP requests.
@@ -75,7 +74,6 @@ class TestGetJson(unittest.TestCase):
         self.assertEqual(result, test_payload)
         mock_get.assert_called_once_with(test_url)
 
-  
 
 class TestMemoize(unittest.TestCase):
     """
