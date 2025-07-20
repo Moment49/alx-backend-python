@@ -6,8 +6,7 @@ and repository listing from the GitHub API client.
 """
 import unittest
 from unittest.mock import patch, PropertyMock, MagicMock
-from parameterized import parameterized
-from parameterized import parameterized_class
+from parameterized import parameterized, parameterized_class
 import requests
 from fixtures import fixtures 
 from client import GithubOrgClient
