@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 import unittest
-from utils import access_nested_map, get_json, memoize
+from utils import access_nested_map, get_json, memoize, Dict
 from parameterized import parameterized, parameterized_class
+from unittest.mock import patch, Mock
 
 
 class TestAccessNestedMap(unittest.TestCase):
@@ -43,3 +44,27 @@ class TestAccessNestedMap(unittest.TestCase):
         
         self.assertEqual(str(context.exception), f"'{expected_key}'")
 
+class TestGetJson(unittest.TestCase):
+    """This is to test the Get Json function"""
+
+    @parameterized.expand([
+        ("example", "http://example.com", {"payload": True}),
+        ("holberton", "http://holberton.io", {"payload": False}),
+    ])
+    def test_get_json(self, name: str, test_url: str, test_payload: Dict, mock_get: Mock) -> None:
+        """
+        Test that get_json returns the expected payload without making actual HTTP requests.
+        """
+        # Set up the mock response
+        mock_response = Mock()
+        mock_response.json.return_value = test_payload
+        mock_get.return_value = mock_response
+
+        # Call the function under test
+        result = get_json(test_url)
+
+        # Assert it returned the correct payload
+        self.assertEqual(result, test_payload)
+
+        # Assert requests.get was called once with the correct URL
+        mock_get.assert_called_once_with(test_url)
