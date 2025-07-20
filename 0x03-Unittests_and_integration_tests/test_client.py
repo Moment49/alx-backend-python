@@ -6,6 +6,33 @@ from parameterized import parameterized
 from client import GithubOrgClient
 
 class TestGithubOrgClient(unittest.TestCase):
+    def test_public_repos_url(self):
+        """
+        Tests that _public_repos_url returns the correct value based on a
+        mocked org property.
+        """
+        # Define the payload that the mocked org property will return
+        expected_repos_url = "https://api.github.com/orgs/testorg/repos"
+        mock_org_payload = {"repos_url": expected_repos_url}
+
+        # Use patch as a context manager to mock the 'org' property
+        # PropertyMock is used because 'org' is a property (due to @memoize)
+        with patch(
+            'client.GithubOrgClient.org', new_callable=unittest.mock.PropertyMock
+        ) as mock_org:
+            mock_org.return_value = mock_org_payload
+
+            # Create an instance of GithubOrgClient
+            client = GithubOrgClient("testorg")
+
+            # Call the _public_repos_url property
+            result = client._public_repos_url
+
+            # Assert that the 'org' property was called
+            mock_org.assert_called_once()
+
+            # Assert that the result is the expected repos URL
+            self.assertEqual(result, expected_repos_url)
     """
     Tests for the GithubOrgClient class.
     """
