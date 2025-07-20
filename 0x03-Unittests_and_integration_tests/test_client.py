@@ -6,7 +6,8 @@ and repository listing from the GitHub API client.
 """
 import unittest
 from unittest.mock import patch, PropertyMock, MagicMock
-from parameterized import parameterized, parameterized_class
+from parameterized import parameterized
+from parameterized import parameterized_class
 import requests
 from fixtures import fixtures 
 from client import GithubOrgClient
@@ -109,7 +110,7 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         """Patch only external requests for integration test"""
-        cls.get_patcher = patch('client.get_json', side_effect=[
+        cls.get_patcher = patch('requests.get', side_effect=[
             cls.org_payload,    # First call: org data
             cls.repos_payload   # Second call: repos list
         ])
