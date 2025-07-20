@@ -205,7 +205,10 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
 
         self.mock_get.assert_any_call(org_url)
         self.mock_get.assert_any_call(repos_url)
-        self.assertEqual(self.mock_get.call_count, 2)
+        self.assertEqual(
+            self.mock_get.call_count,
+            2
+        )
 
     def test_public_repos_with_license(self):
         """
@@ -229,4 +232,7 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
 
         self.mock_get.assert_any_call(org_url)
         self.mock_get.assert_any_call(repos_url)
-        self.assertEqual(self.mock_get.call_count, 2)
+        self.assertEqual(
+            self.mock_get.call_count,
+            2
+        )
