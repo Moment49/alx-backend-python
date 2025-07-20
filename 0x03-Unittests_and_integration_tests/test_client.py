@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Unit test for the GithubOrgClient class in client.py.This module uses unittest,
-parameterized,mock to test organization data retrieval and repository
-listing from the GitHub API client.
+Unit tests for the GithubOrgClient class in client.py.
+This module uses unittest, parameterized, and mock to test organization data retrieval
+and repository listing from the GitHub API client.
 """
 import unittest
 from unittest.mock import patch, PropertyMock, MagicMock
