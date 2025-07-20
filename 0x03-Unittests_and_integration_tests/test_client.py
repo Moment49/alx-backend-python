@@ -1,13 +1,12 @@
-
 #!/usr/bin/env python3
-"""
-Test file for client.py
-"""
+# Test file for client.py
 import unittest
 from unittest.mock import patch, PropertyMock, Mock
 from parameterized import parameterized, parameterized_class
 from client import GithubOrgClient
-from fixtures import fixtures  # Import the fixtures
+import fixtures as test_fixtures  # Import the fixtures module
+
+fixtures = test_fixtures.fixtures
 
 
 class TestGithubOrgClient(unittest.TestCase):
@@ -160,13 +159,15 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
             if url == cls.org_payload["repos_url"].replace("/repos", ""):
                 # This is the URL for the organization data
                 mock_response.json.return_value = cls.org_payload
+                return mock_response
             elif url == cls.org_payload["repos_url"]:
                 # This is the URL for the repositories data
                 mock_response.json.return_value = cls.repos_payload
+                return mock_response
             else:
                 # Fallback for unexpected URLs, can raise an error or return empty
                 mock_response.json.return_value = {}
-            return mock_response
+                return mock_response
 
         cls.mock_get.side_effect = side_effect_func
 
