@@ -9,6 +9,31 @@ from unittest.mock import patch, Mock
 
 @parameterized_class(('org_payload', 'repos_payload', 'expected_repos', 'apache2_repos'), fixtures)
 class TestIntegrationGithubOrgClient(unittest.TestCase):
+
+    def setUp(self):
+        self.mock_get.reset_mock()
+
+    def test_public_repos(self):
+        org_name = self.org_payload["login"]
+        client = GithubOrgClient(org_name)
+        result = client.public_repos()
+        self.assertEqual(result, self.expected_repos)
+        org_url = GithubOrgClient.ORG_URL.format(org=org_name)
+        repos_url = self.org_payload["repos_url"]
+        self.mock_get.assert_any_call(org_url)
+        self.mock_get.assert_any_call(repos_url)
+        self.assertEqual(self.mock_get.call_count, 2)
+
+    def test_public_repos_with_license(self):
+        org_name = self.org_payload["login"]
+        client = GithubOrgClient(org_name)
+        result = client.public_repos(license="apache-2.0")
+        self.assertEqual(result, self.apache2_repos)
+        org_url = GithubOrgClient.ORG_URL.format(org=org_name)
+        repos_url = self.org_payload["repos_url"]
+        self.mock_get.assert_any_call(org_url)
+        self.mock_get.assert_any_call(repos_url)
+        self.assertEqual(self.mock_get.call_count, 2)
     @classmethod
     def setUpClass(cls):
         cls.get_patcher = patch('requests.get')
