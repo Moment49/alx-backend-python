@@ -213,14 +213,18 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
         Tests the public_repos method with a license filter in an integration
         context.
         """
+        # Create an instance of GithubOrgClient using the org name from fixture
         org_name = self.org_payload["login"]
         client = GithubOrgClient(org_name)
 
+        # Call the public_repos method with 'apache-2.0' license
         result = client.public_repos(license="apache-2.0")
 
         # Assert that the result matches the apache2_repos from the fixture
         self.assertEqual(result, self.apache2_repos)
 
+        # Assert that requests.get was called twice (once for org, once for repos)
+        # The exact URLs depend on the org_payload
         org_url = GithubOrgClient.ORG_URL.format(org=org_name)
         repos_url = self.org_payload["repos_url"]
 
