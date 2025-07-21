@@ -69,32 +69,34 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return f"{self.email}"
     
+class Conversation(models.Model):
+    conversation_id  = models.URLField(default=uuid.uuid4, editable=True, unique=True, primary_key=True)
+    participants = models.ManyToManyField(CustomUser, on_delete=models.CASCADE, related_name="conversation")
+    created_at = models.TimeField(auto_now_add=True)
 
+    class Meta:
+        indexes = [
+            models.Index(fields=['message_id'])
+        ]
+        ordering = ['-created_at'] 
+
+    def __str__(self):
+        return f"{self.conversation_id} ({self.participants})"
+    
 
 class Message(models.Model):
     message_id  = models.URLField(default=uuid.uuid4, editable=True, unique=True, primary_key=True)
-    sender_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="user_message")
+    sender = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="messages")
     message_body = models.TextField(null=False)
+    conversation = models.ForeignKey(Conversation, on_delete=models.CASCADE, related_name='messages')
     sent_at = models.TimeField(auto_now=True)
 
     class Meta:
         indexes = [
             models.Index(fields=['message_id'])
         ]
+        ordering = ['sent_at'] 
 
     def __str__(self):
-        return f"{self.message_id} ({self.sender_id})"
-    
-class Conversation(models.Model):
-    conversation_id  = models.URLField(default=uuid.uuid4, editable=True, unique=True, primary_key=True)
-    participants_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="user_conversation")
-    created_at = models.TimeField(auto_now=True)
-
-    class Meta:
-        indexes = [
-            models.Index(fields=['message_id'])
-        ]
-
-    def __str__(self):
-        return f"{self.conversation_id} ({self.participants_id})"
+        return f"Message from {self.sender.email} in conversation:({self.conversation})"
     
