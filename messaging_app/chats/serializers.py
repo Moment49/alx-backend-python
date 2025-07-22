@@ -23,12 +23,13 @@ class UserSerializer(serializers.ModelSerializer):
 
     def validate(self, attrs):
         password = attrs.get('password')
-        confirm_password= attrs.get('password')
+        confirm_password= attrs.get('confirm_password')
+        
         if len(password) and len(confirm_password) < 7:
-            raise ValidationError("Password must be above 7 characters")
+            raise serializers.ValidationError("Password must be above 7 characters")
         else:
             if password != confirm_password:
-                raise ValidationError("Password does not match")
+                raise serializers.ValidationError("Password does not match")
             
         return attrs
     
