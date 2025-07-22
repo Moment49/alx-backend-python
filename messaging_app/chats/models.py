@@ -16,8 +16,7 @@ class UserManager(BaseUserManager):
         if not last_name:
             raise ValueError("Last name must be provided")
         
-        user = self.model(email = self.normalize_email(email),
-                           password=password, first_name=first_name, last_name=last_name)
+        user = self.model(email = self.normalize_email(email), first_name=first_name, last_name=last_name)
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -45,10 +44,10 @@ class CustomUser(AbstractUser):
     )
     user_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True, primary_key=True, verbose_name="User ID")
     phone_number = models.CharField(max_length=15, blank=True, null=True, unique=True)
-    email = models.EmailField(unique=True, verbose_name="Email Address")
+    email = models.EmailField(unique=True, blank=False, null=False, verbose_name="Email Address")
     first_name = models.CharField(max_length=150, blank=False, null=False)
     last_name = models.CharField(max_length=150, blank=False, null=False)
-    password_hash = models.CharField(blank=False)
+    username = models.CharField(max_length=150, unique=False, blank=True, null=True)
     role = models.CharField(max_length=10, choices=ROLES, default='GUEST', null=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -70,26 +69,27 @@ class CustomUser(AbstractUser):
         return f"{self.email}"
     
 class Conversation(models.Model):
-    conversation_id  = models.URLField(default=uuid.uuid4, editable=True, unique=True, primary_key=True)
-    participants = models.ManyToManyField(CustomUser, on_delete=models.CASCADE, related_name="conversation")
-    created_at = models.TimeField(auto_now_add=True)
+    conversation_id  = models.UUIDField(default=uuid.uuid4, editable=True, unique=True, primary_key=True)
+    participants = models.ManyToManyField(CustomUser, related_name="conversations")
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         indexes = [
-            models.Index(fields=['message_id'])
+            models.Index(fields=['conversation_id'])
         ]
         ordering = ['-created_at'] 
 
     def __str__(self):
-        return f"{self.conversation_id} ({self.participants})"
+        participant_names = ",".join([participant.first_name for participant in self.participants.all()])
+        return f"conversation id: {self.conversation_id}, participants:({participant_names})"
     
 
 class Message(models.Model):
-    message_id  = models.URLField(default=uuid.uuid4, editable=True, unique=True, primary_key=True)
+    message_id  = models.UUIDField(default=uuid.uuid4, editable=True, unique=True, primary_key=True)
     sender = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="messages")
     message_body = models.TextField(null=False)
     conversation = models.ForeignKey(Conversation, on_delete=models.CASCADE, related_name='messages')
-    sent_at = models.TimeField(auto_now=True)
+    sent_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         indexes = [
