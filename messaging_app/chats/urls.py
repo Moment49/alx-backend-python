@@ -10,5 +10,5 @@ router.register(r'conversation', views.ConversationViewSet, basename='conversati
 
 urlpatterns =[
     path('auth/register',  views.UsersCreate.as_view(), name="register"),
-    path('auth/login',  views.login_view, name="login")
+    path('auth/login',  views.login_view, name="login"),
 ]+router.urls
