@@ -1,9 +1,9 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
-from rest_framework.routers import DefaultRouter
+from rest_framework import routers 
 
 # Create a router and register our ViewSets with it.
-router = DefaultRouter()
+router = routers.DefaultRouter()
 
 router.register(r'message', views.MessageViewSet, basename='message')
 router.register(r'conversation', views.ConversationViewSet, basename='conversation')
@@ -11,4 +11,5 @@ router.register(r'conversation', views.ConversationViewSet, basename='conversati
 urlpatterns =[
     path('auth/register',  views.UsersCreate.as_view(), name="register"),
     path('auth/login',  views.login_view, name="login"),
-]+router.urls
+    path('', include(router.urls))
+]
