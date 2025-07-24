@@ -1,5 +1,5 @@
 from rest_framework.views import APIView, status
-from rest_framework.decorators import api_view, permission_classes
+from rest_framework.decorators import api_view, permission_classes, action
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework import generics, filters
@@ -13,7 +13,6 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .permissions import IsMessageOwnerOrConversationAdmin
 
 
-
 CustomUser = get_user_model()
 
 
@@ -24,13 +23,6 @@ class MessageViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     filterset_fields = ['sent_at', 'sender__first_name', 'sender__last_name']
     search_fields = ['sender__role', 'sender__email', 'sender__first_name', 'sender__last_name']
-
-    # def get_queryset(self):
-    #     """
-    #     This view should return a list of messages
-    #     for the currently authenticated user.
-    #     """
-    #     return Message.objects.filter(sender__email=self.request.user)
     
     def perform_create(self, serializer):
         # automatically pass the authenticated user as sender of the message 
@@ -62,6 +54,22 @@ class ConversationViewSet(viewsets.ModelViewSet):
         context['user'] = self.request.user
         return context
 
+    @action(detail=True, methods=['post'])
+    def send_message(self, request, pk=None):
+        conversation = self.get_object()
+        print(pk)
+        # check if the user is part of the conversation participants
+        if request.user not in conversation.participants.all():
+            return Response({"error": "You are not a participant in this conversation."}, status=status.HTTP_403_FORBIDDEN)
+        
+        # Get the copy of the request to moify the request data to be passed
+        data = request.data.copy()    
+        data['conversation_id'] = str(conversation.conversation_id)
+
+        serialzer = MessageSerializer(data = data, context=self.get_serializer_context())
+        if serialzer.is_valid(raise_exception=True):
+            serialzer.save(sender=self.request.user)
+            return Response({"message": "sent the message"})
 
 
 class UsersCreate(generics.CreateAPIView):
