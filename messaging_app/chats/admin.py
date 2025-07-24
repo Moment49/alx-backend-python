@@ -23,7 +23,7 @@ class UserCreationForm(forms.ModelForm):
 
 class CustomUserAdmin(BaseUserAdmin):
     add_form = UserCreationForm
-    list_display = ("email", "first_name", "last_name")
+    list_display = ("email", "first_name", "last_name", 'role')
     ordering = ("email",)
 
     fieldsets = (

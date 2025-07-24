@@ -1,13 +1,18 @@
 from rest_framework.views import APIView, status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework import viewsets
 from rest_framework.response import Response
-from rest_framework import generics
+from rest_framework import generics, filters
 from django.contrib.auth import get_user_model
 from .serializers import UserSerializer, LoginSerializer, MessageSerializer, ConversationSerializer
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 from .models import Message, Conversation
+from rest_framework.permissions import AllowAny, IsAuthenticated
+from django_filters.rest_framework import DjangoFilterBackend
+from .permissions import IsMessageOwnerOrConversationAdmin
+
+
 
 CustomUser = get_user_model()
 
@@ -15,20 +20,58 @@ CustomUser = get_user_model()
 class MessageViewSet(viewsets.ModelViewSet):
     queryset = Message.objects.all()
     serializer_class = MessageSerializer
+    permission_classes = [IsAuthenticated, IsMessageOwnerOrConversationAdmin]
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    filterset_fields = ['sent_at', 'sender__first_name', 'sender__last_name']
+    search_fields = ['sender__role', 'sender__email', 'sender__first_name', 'sender__last_name']
+
+    # def get_queryset(self):
+    #     """
+    #     This view should return a list of messages
+    #     for the currently authenticated user.
+    #     """
+    #     return Message.objects.filter(sender__email=self.request.user)
+    
+    def perform_create(self, serializer):
+        # automatically pass the authenticated user as sender of the message 
+        serializer.save(sender=self.request.user)
+    
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context['user'] = self.request.user
+        return context
 
 
 class ConversationViewSet(viewsets.ModelViewSet):
     queryset = Conversation.objects.all()
     serializer_class = ConversationSerializer
+    permission_classes = [IsAuthenticated]
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    filterset_fields = ['created_at']
+    search_fields = ['participants__email']
+    
+    def get_queryset(self):
+        """
+        This view should return a list of conversations
+        for the currently authenticated user.
+        """
+        return Conversation.objects.filter(participants__email=self.request.user)
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context['user'] = self.request.user
+        return context
 
 
 
 class UsersCreate(generics.CreateAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
+    permission_classes = [AllowAny]
 
 
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def login_view(request):
     if request.method == 'POST':
         serializer = LoginSerializer(data = request.data)
