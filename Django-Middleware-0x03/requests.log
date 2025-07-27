@@ -9,3 +9,255 @@
 2025-07-27 21:30:30,211 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
 2025-07-27 21:41:07,623 2025-07-27 21:41:07.613514 - User: martin@ymail.com - Path: /conversation/
 2025-07-27 21:50:22,160 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:09:36,189 /home/moment/alx-backend-python/Django-Middleware-0x03/messaging_app/settings.py changed, reloading.
+2025-07-27 22:11:28,604 /home/moment/alx-backend-python/Django-Middleware-0x03/messaging_app/settings.py changed, reloading.
+2025-07-27 22:11:51,873 /home/moment/alx-backend-python/Django-Middleware-0x03/messaging_app/settings.py changed, reloading.
+2025-07-27 22:11:58,035 2025-07-27 22:11:58.020626 - User: martin@ymail.com - Path: /conversation/
+2025-07-27 22:13:37,961 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:13:43,223 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:13:45,984 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:13:49,357 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:13:52,497 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:13:58,910 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:14:04,633 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:14:19,143 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:14:21,869 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:15:28,253 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:17:29,289 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:19:43,156 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:21:09,874 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:21:25,384 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:21:35,877 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:21:43,158 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:21:45,769 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:21:51,091 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:21:55,669 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:21:59,836 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:22:02,312 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:23:50,587 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:24:24,495 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:27:23,426 2025-07-27 22:27:23.416608 - User: martin@ymail.com - Path: /
+2025-07-27 22:27:23,486 Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 131, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/middleware/clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'PermissionDenied' object has no attribute 'get'
+2025-07-27 22:28:33,216 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:28:41,409 2025-07-27 22:28:41.404332 - User: martin@ymail.com - Path: /
+2025-07-27 22:29:30,256 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:29:34,603 2025-07-27 22:29:34.591564 - User: martin@ymail.com - Path: /
+2025-07-27 22:30:23,125 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:30:26,781 2025-07-27 22:30:26.769305 - User: martin@ymail.com - Path: /
+2025-07-27 22:31:17,976 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:31:24,515 2025-07-27 22:31:24.510632 - User: martin@ymail.com - Path: /
+2025-07-27 22:31:31,908 2025-07-27 22:31:31.902587 - User: martin@ymail.com - Path: /message/
+2025-07-27 22:31:44,448 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:32:06,036 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:32:12,554 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:32:14,775 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:32:17,741 2025-07-27 22:32:17.733103 - User: martin@ymail.com - Path: /message/
+2025-07-27 22:32:19,634 2025-07-27 22:32:19.630755 - User: martin@ymail.com - Path: /message/
+2025-07-27 22:32:44,306 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:32:48,080 2025-07-27 22:32:48.075244 - User: martin@ymail.com - Path: /message/
+2025-07-27 22:33:38,271 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:33:41,663 2025-07-27 22:33:41.653175 - User: martin@ymail.com - Path: /message/
+2025-07-27 22:33:41,703 Internal Server Error: /message/
+Traceback (most recent call last):
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 131, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/middleware/clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'PermissionDenied' object has no attribute 'get'
+2025-07-27 22:34:03,696 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:34:07,143 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:34:13,467 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:34:15,144 2025-07-27 22:34:15.139043 - User: martin@ymail.com - Path: /message/
+2025-07-27 22:34:15,193 Internal Server Error: /message/
+Traceback (most recent call last):
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py", line 65, in __call__
+    raise PermissionDenied("Sorry you can not access the message/chats outside the time 6pm - 9pm")
+rest_framework.exceptions.PermissionDenied: Sorry you can not access the message/chats outside the time 6pm - 9pm
+2025-07-27 22:34:37,602 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:34:42,513 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:34:45,045 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:34:57,321 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:35:00,527 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:35:08,288 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:35:16,177 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:37:16,005 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:37:51,346 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:37:56,948 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:38:07,626 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:38:14,387 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:38:32,430 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/views.py changed, reloading.
+2025-07-27 22:38:40,828 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:38:51,308 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:40:31,928 2025-07-27 22:40:31.923868 - User: martin@ymail.com - Path: /message/
+2025-07-27 22:40:50,376 2025-07-27 22:40:50.372714 - User: martin@ymail.com - Path: /message/
+2025-07-27 22:41:08,886 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:41:14,640 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:41:24,263 2025-07-27 22:41:24.249855 - User: martin@ymail.com - Path: /message/
+2025-07-27 22:41:24,310 Internal Server Error: /message/
+Traceback (most recent call last):
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 131, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/middleware/common.py", line 113, in process_response
+    response.headers["Content-Length"] = str(len(response.content))
+                                                 ^^^^^^^^^^^^^^^^
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/template/response.py", line 135, in content
+    raise ContentNotRenderedError(
+django.template.response.ContentNotRenderedError: The response content must be rendered before it can be accessed.
+2025-07-27 22:42:00,937 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:42:05,364 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:42:07,727 2025-07-27 22:42:07.720971 - User: martin@ymail.com - Path: /message/
+2025-07-27 22:42:21,903 2025-07-27 22:42:21.899595 - User: martin@ymail.com - Path: /message/
+2025-07-27 22:42:32,888 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:42:34,773 2025-07-27 22:42:34.766921 - User: martin@ymail.com - Path: /message/
+2025-07-27 22:42:34,884 Internal Server Error: /message/
+Traceback (most recent call last):
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 131, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/middleware/common.py", line 113, in process_response
+    response.headers["Content-Length"] = str(len(response.content))
+                                                 ^^^^^^^^^^^^^^^^
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/template/response.py", line 135, in content
+    raise ContentNotRenderedError(
+django.template.response.ContentNotRenderedError: The response content must be rendered before it can be accessed.
+2025-07-27 22:42:44,622 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:42:46,436 2025-07-27 22:42:46.426889 - User: martin@ymail.com - Path: /message/
+2025-07-27 22:43:09,690 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:43:31,058 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:43:35,241 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:47:32,749 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:47:35,310 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:47:43,718 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:47:54,321 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:49:16,526 2025-07-27 22:49:16.511906 - User: martin@ymail.com - Path: /message/
+2025-07-27 22:49:16,606 Internal Server Error: /message/
+Traceback (most recent call last):
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 131, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/middleware/common.py", line 113, in process_response
+    response.headers["Content-Length"] = str(len(response.content))
+                                                 ^^^^^^^^^^^^^^^^
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/template/response.py", line 135, in content
+    raise ContentNotRenderedError(
+django.template.response.ContentNotRenderedError: The response content must be rendered before it can be accessed.
+2025-07-27 22:49:27,257 2025-07-27 22:49:27.251943 - User: martin@ymail.com - Path: /message/
+2025-07-27 22:49:27,317 Internal Server Error: /message/
+Traceback (most recent call last):
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 131, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/middleware/common.py", line 113, in process_response
+    response.headers["Content-Length"] = str(len(response.content))
+                                                 ^^^^^^^^^^^^^^^^
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/template/response.py", line 135, in content
+    raise ContentNotRenderedError(
+django.template.response.ContentNotRenderedError: The response content must be rendered before it can be accessed.
+2025-07-27 22:49:28,869 2025-07-27 22:49:28.866617 - User: martin@ymail.com - Path: /message/
+2025-07-27 22:49:28,934 Internal Server Error: /message/
+Traceback (most recent call last):
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 131, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/middleware/common.py", line 113, in process_response
+    response.headers["Content-Length"] = str(len(response.content))
+                                                 ^^^^^^^^^^^^^^^^
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/template/response.py", line 135, in content
+    raise ContentNotRenderedError(
+django.template.response.ContentNotRenderedError: The response content must be rendered before it can be accessed.
+2025-07-27 22:49:40,353 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:49:43,695 2025-07-27 22:49:43.685877 - User: martin@ymail.com - Path: /message/
+2025-07-27 22:49:43,856 Internal Server Error: /message/
+Traceback (most recent call last):
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 131, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/middleware/common.py", line 113, in process_response
+    response.headers["Content-Length"] = str(len(response.content))
+                                                 ^^^^^^^^^^^^^^^^
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/template/response.py", line 135, in content
+    raise ContentNotRenderedError(
+django.template.response.ContentNotRenderedError: The response content must be rendered before it can be accessed.
+2025-07-27 22:51:27,560 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:51:30,764 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:51:36,333 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:51:40,887 2025-07-27 22:51:40.881482 - User: martin@ymail.com - Path: /message/
+2025-07-27 22:51:40,991 Internal Server Error: /message/
+Traceback (most recent call last):
+  File "/home/moment/alx-backend-python/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py", line 69, in __call__
+    raise PermissionDenied({"Sorry you can not access the message/chats outside the time 6pm - 9pm"})
+rest_framework.exceptions.PermissionDenied: {'Sorry you can not access the message/chats outside the time 6pm - 9pm'}
+2025-07-27 22:51:55,236 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:52:02,550 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:52:05,835 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:52:13,868 2025-07-27 22:52:13.862657 - User: martin@ymail.com - Path: /message/
+2025-07-27 22:52:13,941 You can access the messages
+2025-07-27 22:52:23,867 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:52:59,695 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:53:02,094 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:53:10,462 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:54:05,436 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:54:13,867 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:54:19,055 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:54:42,963 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:55:03,958 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:55:07,296 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:55:20,558 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:55:24,183 2025-07-27 22:55:24.169458 - User: martin@ymail.com - Path: /message/
+2025-07-27 22:55:24,253 You can access the message/chats that belongs to you
+2025-07-27 22:55:25,845 2025-07-27 22:55:25.842418 - User: martin@ymail.com - Path: /message/
+2025-07-27 22:55:25,877 You can access the message/chats that belongs to you
+2025-07-27 22:55:26,882 2025-07-27 22:55:26.879682 - User: martin@ymail.com - Path: /message/
+2025-07-27 22:55:26,911 You can access the message/chats that belongs to you
+2025-07-27 22:55:38,681 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:55:40,999 2025-07-27 22:55:40.993801 - User: martin@ymail.com - Path: /message/
+2025-07-27 22:55:41,074 Forbidden: /message/
+2025-07-27 22:55:45,295 2025-07-27 22:55:45.292500 - User: martin@ymail.com - Path: /message/
+2025-07-27 22:55:45,334 Forbidden: /message/
+2025-07-27 22:55:56,288 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:55:58,380 2025-07-27 22:55:58.372842 - User: martin@ymail.com - Path: /message/
+2025-07-27 22:55:58,441 Forbidden: /message/
+2025-07-27 22:56:03,813 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:56:05,816 2025-07-27 22:56:05.804793 - User: martin@ymail.com - Path: /message/
+2025-07-27 22:56:28,131 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
