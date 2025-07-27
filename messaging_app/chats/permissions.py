@@ -1,19 +1,19 @@
-from rest_framework.permissions import BasePermission, SAFE_METHODS
 from rest_framework.validators import ValidationError
+from rest_framework import permissions
 
-class IsParticipantOfConversationr(BasePermission):
+class IsParticipantOfConversationr(permissions.BasePermission):
     """
     Conversation: User can view, edit and delete messages they are a conversation of
     Message: You can only be updated or delete by Admin and You can not delete or update another persons message
     """
     def has_permission(self, request, view):
-        if request.user.is_authenticated and request.method in SAFE_METHODS:
+        if request.user.is_authenticated and request.method in permissions.SAFE_METHODS:
             return True
         else:
             raise ValidationError("Authentication is required to access this resource.")
     
     def has_object_permission(self, request, view, obj):
-        if request.method in SAFE_METHODS:
+        if request.method in permissions.SAFE_METHODS:
             return True
         
         if hasattr(obj, 'conversation'):
