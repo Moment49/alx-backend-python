@@ -1,7 +1,7 @@
 from rest_framework.validators import ValidationError
 from rest_framework import permissions
 
-class IsParticipantOfConversationr(permissions.BasePermission):
+class IsParticipantOfConversation(permissions.BasePermission):
     """
     Conversation: User can view, edit and delete messages they are a conversation of
     Message: You can only be updated or delete by Admin and You can not delete or update another persons message

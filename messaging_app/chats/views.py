@@ -9,7 +9,7 @@ from django.contrib.auth import authenticate
 from .models import Message, Conversation
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
-from .permissions import IsMessageOwnerOrConversationAdmin
+from .permissions import IsParticipantOfConversation
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.exceptions import AuthenticationFailed
@@ -23,7 +23,7 @@ CustomUser = get_user_model()
 class MessageViewSet(viewsets.ModelViewSet):
     queryset = Message.objects.all()
     serializer_class = MessageSerializer
-    permission_classes = [IsAuthenticated, IsMessageOwnerOrConversationAdmin]
+    permission_classes = [IsAuthenticated, IsParticipantOfConversation]
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     filterset_fields = ['sent_at', 'sender__first_name', 'sender__last_name']
     search_fields = ['sender__role', 'sender__email', 'sender__first_name', 'sender__last_name']
@@ -41,7 +41,7 @@ class MessageViewSet(viewsets.ModelViewSet):
 class ConversationViewSet(viewsets.ModelViewSet):
     queryset = Conversation.objects.all()
     serializer_class = ConversationSerializer
-    permission_classes = [IsAuthenticated, IsMessageOwnerOrConversationAdmin]
+    permission_classes = [IsAuthenticated, IsParticipantOfConversation]
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     filterset_fields = ['created_at']
     search_fields = ['participants__email']
