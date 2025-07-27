@@ -15,6 +15,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.exceptions import AuthenticationFailed
 from rest_framework.authentication import SessionAuthentication
 from .pagination import CustomMessagePagination
+from .filters import MessageFilter
 
 
 
@@ -27,14 +28,18 @@ class MessageViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     filterset_fields = ['sent_at', 'sender__first_name', 'sender__last_name']
     search_fields = ['sender__role', 'sender__email', 'sender__first_name', 'sender__last_name']
-    pagination_class = [CustomMessagePagination]
+    pagination_class = CustomMessagePagination
+    filterset_class = MessageFilter
     
     def perform_create(self, serializer):
         # automatically pass the authenticated user as sender of the message 
         serializer.save(sender=self.request.user)
     
     def get_queryset(self):
-        return  Message.objects.filter(sender__email= self.request.user)
+        if self.action == 'list':
+            return  Message.objects.filter(conversation__participants= self.request.user).distinct()
+        
+        Message.objects.all()
 
     def get_serializer_context(self):
         context = super().get_serializer_context()
