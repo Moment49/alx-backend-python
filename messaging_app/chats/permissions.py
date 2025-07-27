@@ -16,6 +16,7 @@ class IsParticipantOfConversation(permissions.BasePermission):
         if request.method in permissions.SAFE_METHODS:
             return True
         
+        # Message : object
         if hasattr(obj, 'conversation'):
             if request.method == "PUT" or request.method == "PATCH":
                 if obj.sender == request.user:
