@@ -21,7 +21,6 @@ CustomUser = get_user_model()
 
 
 class MessageViewSet(viewsets.ModelViewSet):
-    queryset = Message.objects.all()
     serializer_class = MessageSerializer
     permission_classes = [IsAuthenticated, IsParticipantOfConversation]
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
@@ -32,8 +31,12 @@ class MessageViewSet(viewsets.ModelViewSet):
         # automatically pass the authenticated user as sender of the message 
         serializer.save(sender=self.request.user)
     
-    # def get_queryset(self):
-    #     return  Message.objects.filter(sender__email= self.request.user)
+    def get_queryset(self):
+        if self.action == 'list':
+            return  Message.objects.filter(conversation__participants= self.request.user).distinct()
+        else:
+            Message.objects.all()
+
 
     def get_serializer_context(self):
         context = super().get_serializer_context()

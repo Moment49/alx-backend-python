@@ -37,13 +37,16 @@ class IsParticipantOfConversation(permissions.BasePermission):
                     else:
                         raise ValidationError("You can not delete a message that is not yours")
         
-        # This will handle the Conversations
+        # Handle Conversation Permissions
         if hasattr(obj, 'participants'):
-            participants = obj.participants
-            print(f"Test perm: {participants.all()}")
-            if request.user.role in ['ADMIN', 'HOST'] and request.user in obj.participants.all():
-                return True
-            else:
+            if request.method in permissions.SAFE_METHODS:
+                if request.user in obj.participants.all():
+                    return True
+                raise exceptions.PermissionDenied("You must be a participant to view this conversation.")
+             # Delete: allow only if user is creator or an admin-participant
+            if request.method == "DELETE":
+                if request.user.role in ['ADMIN', 'HOST'] or request.user in obj.participants.all():
+                    return True
                 raise exceptions.PermissionDenied("You must be a participant and Admin to delete a conversation")
         return False
           
