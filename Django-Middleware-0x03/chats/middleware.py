@@ -61,7 +61,7 @@ class RestrictAccessByTimeMiddleware:
                 if server_time.time() >= start_window and server_time.time() <= end_window:
                    logger.info("You can access the message/chats that belongs to you")
                 else:
-                    return JsonResponse({"detail":"Sorry, you cannot access the message/chats outside the time 6pm - 9pm"})
+                    return  HttpResponseForbidden("Sorry, access denied you cannot access the message/chats outside the time 6pm - 9pm")
         
         return response
         

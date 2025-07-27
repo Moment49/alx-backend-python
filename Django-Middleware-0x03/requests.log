@@ -261,3 +261,9 @@ rest_framework.exceptions.PermissionDenied: {'Sorry you can not access the messa
 2025-07-27 22:56:03,813 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
 2025-07-27 22:56:05,816 2025-07-27 22:56:05.804793 - User: martin@ymail.com - Path: /message/
 2025-07-27 22:56:28,131 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 22:58:42,378 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 23:01:36,260 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 23:02:02,242 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 23:02:20,942 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 23:02:26,233 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-27 23:03:07,653 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
