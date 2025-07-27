@@ -95,14 +95,14 @@ class MessageSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Conversation does not exist.")
 
         all_participants = converse.participants.all()
-
+       
         # Check if conversation has participants
         if not all_participants.exists():
             raise serializers.ValidationError("Cannot send message to a conversation without participants.")
-
-        # Check if the user is a participant
+       
+        # Check if the user is a participant 
         if not all_participants.filter(user_id=req_user.user_id).exists():
-            raise serializers.ValidationError("You are not a participant in this conversation.")
+            raise serializers.ValidationError("You are not a participant of this converse, hence you cant send a message")
 
         return attrs
     
