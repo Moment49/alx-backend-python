@@ -14,6 +14,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.exceptions import AuthenticationFailed
 from rest_framework.authentication import SessionAuthentication
+from .pagination import CustomMessagePagination
 
 
 
@@ -26,6 +27,7 @@ class MessageViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     filterset_fields = ['sent_at', 'sender__first_name', 'sender__last_name']
     search_fields = ['sender__role', 'sender__email', 'sender__first_name', 'sender__last_name']
+    pagination_class = [CustomMessagePagination]
     
     def perform_create(self, serializer):
         # automatically pass the authenticated user as sender of the message 
