@@ -52,7 +52,7 @@ class RestrictAccessByTimeMiddleware:
         # Check the current server time
         server_time = datetime.now()
         start_window = time(hour=18, minute=0, second=0)
-        end_window = time(hour=21, minute=50, second=0)
+        end_window = time(hour=21, minute=0, second=0)
 
         response = self.get_response(request)
 
