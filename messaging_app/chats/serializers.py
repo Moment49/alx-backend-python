@@ -43,8 +43,7 @@ class UserSerializer(serializers.ModelSerializer):
         confirm_password = validated_data.pop('confirm_password')
        
         user = CustomUser.objects.create_user(email=email, **validated_data)
-        # Create token for user
-        Token.objects.create(user=user)
+
 
         user.save()
         return user
@@ -53,6 +52,10 @@ class UserSerializer(serializers.ModelSerializer):
 class LoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField(write_only=True)
+
+
+class LogoutSerializer(serializers.Serializer):
+    token = serializers.CharField(write_only=True)
   
 
 class MessageSerializer(serializers.ModelSerializer):
@@ -114,7 +117,7 @@ class MessageSerializer(serializers.ModelSerializer):
         return message
     
     def update(self, instance, validated_data):
-        # check the conversation
+        # update the message body
         instance.message_body = validated_data.get("message_body", instance.message_body)
         instance.save()
 
@@ -134,7 +137,9 @@ class ConversationSerializer(serializers.ModelSerializer):
     def validate_participants(self, value):
         """Validate at least one participants before you create a conversation"""
         if not value:
-            raise serializers.ValidationError("Sorry YOU CAN NOT CREATE AN EMPTY CONVERSATION") 
+             raise serializers.ValidationError(
+            "You must add at least one participant to create a conversation."
+        )
         return value
     
     def create(self, validated_data):
@@ -146,11 +151,32 @@ class ConversationSerializer(serializers.ModelSerializer):
         # Create the conversation and add the participants along with user
         conversations = Conversation.objects.create()
         conversations.participants.add(*participants)
+
+        # Automatically add the user as a participant after the validation check
         conversations.participants.add(user)
 
         conversations.save()
 
         return conversations
+
+    def update(self, instance, validated_data):
+        """This method is to update the conversation"""
+        participants_data = validated_data.pop("participants")
+     
+        # Get the authenticated user and add as well so user will not be removed
+        user = self.context.get("user")
+
+        if participants_data is not None:
+            # Replace the existing conversation participants by adding more participates or removing more participants
+            # I will refactor this to use a separate action for add or remove participants in the viewset
+            instance.participants.set(participants_data)
+
+            # Add the user
+            instance.participants.add(user)
+        
+            instance.save()
+        
+        return instance
 
 
 
