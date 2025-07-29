@@ -16,7 +16,7 @@ logging.basicConfig(filename=full_path,
 
 logger = logging.getLogger(__name__)
 handler = logging.StreamHandler()
-handler.setFormatter(logging.Formatter("%(asctime)s %(levelname)s %(message)s"))
+handler.setFormatter(logging.Formatter("%(asctime)s %(levelname)s %(name)s %(message)s"))
 logger.addHandler(handler)
 logger.setLevel(logging.INFO)
 
@@ -33,6 +33,7 @@ class RequestLoggingMiddleware:
         # Get the request path and request user and log it
         print("before hitting the view")
         user = request.user
+        print(user)
         # Log the info to the log file about the user
         logger.info(f"{datetime.now()} - User: {user} - Path: {request.path}")
                     
@@ -69,11 +70,13 @@ class RestrictAccessByTimeMiddleware:
 class OffensiveLanguageMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
-        chat_sent_ip_addr_count = 0
-        max_sent_message_per_min = 5
+        self.chat_sent_ip_addr_count = 0
+        self.max_sent_message_per_min = 5
     
     def __call__(self, request):
-        
+        # Get the IP address of the User making the post request
+        ip = self.request.META.get['REMOTE_ADDR']
+        print(ip)
         response = self.get_response(request)
 
         return response

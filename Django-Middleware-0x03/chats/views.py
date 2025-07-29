@@ -116,6 +116,7 @@ def login_view(request):
             else:
                 return Response({"message":"Invalid Credentials!!! user not authenticated"},
                                 status=status.HTTP_401_UNAUTHORIZED)
+    
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
