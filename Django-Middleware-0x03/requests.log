@@ -1030,3 +1030,4 @@ NameError: name 'minutes' is not defined
 2025-07-31 07:57:50,155 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
 2025-07-31 07:58:06,818 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
 2025-07-31 07:58:13,014 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:01:17,094 /home/moment/alx-backend-python/Django-Middleware-0x03/messaging_app/settings.py changed, reloading.
