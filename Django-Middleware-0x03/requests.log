@@ -293,3 +293,20 @@ rest_framework.exceptions.PermissionDenied: {'Sorry you can not access the messa
 2025-07-27 23:16:52,136 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
 2025-07-27 23:43:19,956 2025-07-27 23:43:19.951400 - User: AnonymousUser - Path: /api/v1/auth/login
 2025-07-27 23:47:23,453 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+<<<<<<< HEAD
+=======
+2025-07-27 23:55:27,603 2025-07-27 23:55:27.589422 - User: martin@ymail.com - Path: /message/
+2025-07-27 23:55:27,679 Forbidden: /message/
+2025-07-31 05:10:02,646 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 05:10:07,860 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 05:10:11,127 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 05:10:13,728 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 05:10:20,095 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 05:10:25,539 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 05:10:34,952 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 05:10:38,561 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 05:10:45,955 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+>>>>>>> 37aa1b3 (updated)
+2025-07-31 05:15:45,236 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 05:16:19,991 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 05:16:29,266 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.

@@ -70,13 +70,12 @@ class RestrictAccessByTimeMiddleware:
 class OffensiveLanguageMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
-        self.chat_sent_ip_addr_count = 0
-        self.max_sent_message_per_min = 5
+        chat_sent_ip_addr_count = 0
+        max_sent_message_per_min = 5
+        self.tracker_ip = {}
     
     def __call__(self, request):
-        # Get the IP address of the User making the post request
-        ip = self.request.META.get['REMOTE_ADDR']
-        print(ip)
+        
         response = self.get_response(request)
 
         return response
