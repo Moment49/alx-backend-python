@@ -1033,3 +1033,164 @@ NameError: name 'minutes' is not defined
 2025-07-31 08:01:17,094 /home/moment/alx-backend-python/Django-Middleware-0x03/messaging_app/settings.py changed, reloading.
 2025-07-31 08:02:06,749 /home/moment/alx-backend-python/Django-Middleware-0x03/messaging_app/settings.py changed, reloading.
 2025-07-31 08:02:11,725 /home/moment/alx-backend-python/Django-Middleware-0x03/messaging_app/settings.py changed, reloading.
+2025-07-31 08:25:51,892 2025-07-31 08:25:51.890565 - User: AnonymousUser - Path: /api/v1/message/
+2025-07-31 08:25:52,203 First time: 127.0.0.1:{'start_time': datetime.datetime(2025, 7, 31, 8, 25, 51, 893518), 'ip_count': 1}
+2025-07-31 08:26:53,301 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:27:01,406 2025-07-31 08:27:01.406618 - User: AnonymousUser - Path: /api/v1/message/
+2025-07-31 08:27:01,638 First time: 127.0.0.1:{'start_time': datetime.datetime(2025, 7, 31, 8, 27, 1, 407273), 'ip_count': 1}
+2025-07-31 08:27:28,344 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:27:33,773 2025-07-31 08:27:33.773123 - User: AnonymousUser - Path: /api/v1/message/
+2025-07-31 08:27:34,049 First time: 127.0.0.1:{'start_time': datetime.datetime(2025, 7, 31, 8, 27, 33, 774150), 'ip_count': 1}
+2025-07-31 08:27:47,065 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:28:02,758 2025-07-31 08:28:02.758508 - User: AnonymousUser - Path: /api/v1/message/
+2025-07-31 08:28:02,964 First time: 127.0.0.1:{'start_time': datetime.datetime(2025, 7, 31, 8, 28, 2, 759513), 'ip_count': 1}
+2025-07-31 08:28:24,278 2025-07-31 08:28:24.261393 - User: martin@ymail.com - Path: /
+2025-07-31 08:28:26,017 2025-07-31 08:28:26.002383 - User: martin@ymail.com - Path: /favicon.ico
+2025-07-31 08:28:26,079 Not Found: /favicon.ico
+2025-07-31 08:29:25,491 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:29:33,956 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:29:37,799 2025-07-31 08:29:37.785422 - User: martin@ymail.com - Path: /
+2025-07-31 08:29:37,804 Forbidden: /
+2025-07-31 08:30:19,839 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:30:33,586 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:30:39,900 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:30:43,339 2025-07-31 08:30:43.302074 - User: martin@ymail.com - Path: /
+2025-07-31 08:30:43,353 Forbidden: /
+2025-07-31 08:31:05,707 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:31:13,806 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:31:17,417 2025-07-31 08:31:17.400506 - User: martin@ymail.com - Path: /
+2025-07-31 08:31:17,430 Forbidden: /
+2025-07-31 08:31:34,028 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:31:38,270 2025-07-31 08:31:38.255968 - User: martin@ymail.com - Path: /
+2025-07-31 08:31:38,280 Forbidden: /
+2025-07-31 08:31:39,597 2025-07-31 08:31:39.584602 - User: martin@ymail.com - Path: /
+2025-07-31 08:31:39,605 Forbidden: /
+2025-07-31 08:32:15,879 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:32:22,374 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:32:26,748 2025-07-31 08:32:26.721245 - User: martin@ymail.com - Path: /
+2025-07-31 08:32:50,710 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:32:54,840 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:33:07,006 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:33:22,010 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:33:24,586 2025-07-31 08:33:24.569264 - User: martin@ymail.com - Path: /
+2025-07-31 08:33:36,198 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:33:53,734 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:34:23,784 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:34:33,697 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:34:38,163 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:34:45,816 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:34:50,343 2025-07-31 08:34:50.331593 - User: martin@ymail.com - Path: /
+2025-07-31 08:36:00,257 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:36:26,373 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:36:33,233 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:36:51,449 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:37:10,255 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:37:27,331 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:37:31,669 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:37:42,908 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:37:56,228 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:38:10,206 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:39:00,747 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:39:08,578 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:39:20,144 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:39:31,945 2025-07-31 08:39:31.935057 - User: martin@ymail.com - Path: /
+2025-07-31 08:39:34,403 2025-07-31 08:39:34.359606 - User: martin@ymail.com - Path: /
+2025-07-31 08:39:36,562 2025-07-31 08:39:36.555893 - User: martin@ymail.com - Path: /message/
+2025-07-31 08:39:36,785 Forbidden: /message/
+2025-07-31 08:39:58,327 2025-07-31 08:39:58.279575 - User: martin@ymail.com - Path: /conversation/
+2025-07-31 08:41:30,656 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:41:33,375 2025-07-31 08:41:33.348308 - User: martin@ymail.com - Path: /conversation/
+2025-07-31 08:41:56,407 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:42:20,012 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:42:41,750 2025-07-31 08:42:41.743154 - User: martin@ymail.com - Path: /
+2025-07-31 08:42:54,977 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:43:12,232 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:45:34,456 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:45:38,989 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:46:37,250 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:46:44,438 2025-07-31 08:46:44.419646 - User: martin@ymail.com - Path: /
+2025-07-31 08:47:04,809 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:47:07,742 2025-07-31 08:47:07.712990 - User: martin@ymail.com - Path: /
+2025-07-31 08:47:07,757 Forbidden: /
+2025-07-31 08:47:57,397 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:48:03,363 2025-07-31 08:48:03.347092 - User: martin@ymail.com - Path: /
+2025-07-31 08:48:03,367 Forbidden: /
+2025-07-31 08:48:13,061 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:48:15,857 2025-07-31 08:48:15.848107 - User: martin@ymail.com - Path: /
+2025-07-31 08:48:42,148 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:48:48,158 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:48:56,176 2025-07-31 08:48:56.164718 - User: martin@ymail.com - Path: /api-auth/logout/
+2025-07-31 08:48:56,182 Forbidden: /api-auth/logout/
+2025-07-31 08:49:04,183 2025-07-31 08:49:04.155085 - User: martin@ymail.com - Path: /
+2025-07-31 08:49:08,208 2025-07-31 08:49:08.187865 - User: martin@ymail.com - Path: /api-auth/logout/
+2025-07-31 08:49:08,212 Forbidden: /api-auth/logout/
+2025-07-31 08:49:13,303 2025-07-31 08:49:13.296429 - User: martin@ymail.com - Path: /
+2025-07-31 08:49:16,449 2025-07-31 08:49:16.449398 - User: AnonymousUser - Path: /
+2025-07-31 08:49:16,479 Unauthorized: /
+2025-07-31 08:49:16,934 2025-07-31 08:49:16.934145 - User: AnonymousUser - Path: /
+2025-07-31 08:49:16,952 Unauthorized: /
+2025-07-31 08:49:27,141 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:49:32,095 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:49:48,021 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:49:53,041 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:49:59,027 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:50:04,982 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:50:36,881 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:50:44,616 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:50:52,801 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:50:59,879 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:51:04,979 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:51:14,005 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:51:29,928 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:51:33,702 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:51:38,574 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:51:42,436 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:51:48,444 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:51:53,343 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:52:17,495 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:52:27,207 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:52:36,159 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:52:40,876 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:52:50,821 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:53:02,158 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:53:16,067 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:53:23,420 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:53:29,994 2025-07-31 08:53:29.994325 - User: AnonymousUser - Path: /
+2025-07-31 08:53:30,113 Unauthorized: /
+2025-07-31 08:54:16,478 2025-07-31 08:54:16.459598 - User: martin@ymail.com - Path: /
+2025-07-31 08:54:28,597 2025-07-31 08:54:28.552909 - User: martin@ymail.com - Path: /api/v1/
+2025-07-31 08:54:28,610 Forbidden: /api/v1/
+2025-07-31 08:54:30,935 2025-07-31 08:54:30.930996 - User: martin@ymail.com - Path: /api/v1/login
+2025-07-31 08:54:30,945 Forbidden: /api/v1/login
+2025-07-31 08:54:46,069 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:54:51,068 2025-07-31 08:54:51.057145 - User: martin@ymail.com - Path: /api/v1/login
+2025-07-31 08:54:51,123 Not Found: /api/v1/login
+2025-07-31 08:55:02,936 2025-07-31 08:55:02.906636 - User: martin@ymail.com - Path: /api/v1/auth/login
+2025-07-31 08:55:03,111 Method Not Allowed: /api/v1/auth/login
+2025-07-31 08:55:16,332 2025-07-31 08:55:16.328088 - User: martin@ymail.com - Path: /api/v1/auth/login
+2025-07-31 08:55:16,353 Method Not Allowed: /api/v1/auth/login
+2025-07-31 08:55:33,314 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:55:57,072 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:56:02,240 2025-07-31 08:56:02.228190 - User: martin@ymail.com - Path: /api/v1/auth/login
+2025-07-31 08:56:02,433 Method Not Allowed: /api/v1/auth/login
+2025-07-31 08:56:32,218 2025-07-31 08:56:32.218448 - User: AnonymousUser - Path: /api/v1/message/
+2025-07-31 08:56:32,566 First time: 105.113.65.72:{'start_time': datetime.datetime(2025, 7, 31, 8, 56, 32, 219665), 'ip_count': 1}
+2025-07-31 08:57:34,446 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:57:52,555 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 08:58:20,070 2025-07-31 08:58:20.069734 - User: AnonymousUser - Path: /api/v1/message/
+2025-07-31 08:58:21,168 First time: 105.113.65.72:{'start_time': datetime.datetime(2025, 7, 31, 8, 58, 20, 71012), 'ip_count': 1}
+2025-07-31 09:00:01,131 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 09:01:01,294 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 09:02:36,768 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 09:02:45,990 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 09:04:33,023 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 09:04:43,504 /home/moment/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+2025-07-31 09:04:56,475 2025-07-31 09:04:56.458455 - User: martin@ymail.com - Path: /api/v1/auth/login
+2025-07-31 09:04:56,607 Method Not Allowed: /api/v1/auth/login
+2025-07-31 09:06:15,862 2025-07-31 09:06:15.844994 - User: martin@ymail.com - Path: /
+2025-07-31 09:06:59,166 2025-07-31 09:06:59.161822 - User: martin@ymail.com - Path: /
+2025-07-31 09:07:06,121 2025-07-31 09:07:06.116246 - User: martin@ymail.com - Path: /api/v1/
+2025-07-31 09:07:10,200 2025-07-31 09:07:10.197653 - User: martin@ymail.com - Path: /api/v1/login
+2025-07-31 09:07:10,253 Not Found: /api/v1/login
+2025-07-31 09:07:17,469 2025-07-31 09:07:17.466325 - User: martin@ymail.com - Path: /api/v1/auth/login
+2025-07-31 09:07:17,491 Method Not Allowed: /api/v1/auth/login
