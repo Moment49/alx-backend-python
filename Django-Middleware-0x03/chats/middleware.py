@@ -67,42 +67,53 @@ class RestrictAccessByTimeMiddleware:
 
 class OffensiveLanguageMiddleware:
     def __init__(self, get_response):
+        # One-time configuration and initialization
         self.get_response = get_response
-        chat_sent_ip_addr_count = 0
-        max_sent_message_per_min = 5
-        self.tracker_ip = {}
+        self.tracker_ip = {}  # Dictionary to track IP addresses, their request counts, and timestamps
     
     def __call__(self, request):
-        # Get the request path and Ip
+        # Extract the client's IP address from request headers
         ip_address = request.META.get('HTTP_X_FORWARDED_FOR')
         if ip_address:
-            ip_address = ip_address.split(',')[0]
+            ip_address = ip_address.split(',')[0]  # In case of multiple forwarded IPs
         else:
             ip_address = request.META.get('REMOTE_ADDR')
-        
-        # Get the current time
+
+        # Get the current time for request timestamping
         start_time = datetime.now()
-        response = self.get_response(request)
         # Check if the user is autheticated
-        if request.user.is_authenticated:
-            self.ip_count = 0
-            if request.method == "POST" and request.path == "/api/v1/message":
-                # Increment the count if the post request is hit
-                if not ip_address in self.tracker_ip:
-                    self.ip_count += 1
-                    self.tracker_ip['ip_address'] = ip_address
-                    self.tracker_ip['start_time'] = start_time
-                    self.tracker_ip['ip_count'] = self.ip_count
-                    print(self.tracker_ip)
-               
-                # Get the current time
+        
+        # Call the view (and next middleware after this one)
+        response = self.get_response(request)
+       
+        # Proceed only if the user is authenticated and accessing the message POST endpoint
+        if request.user.is_authenticated and request.method == "POST" and request.path == "/api/v1/message/":
+            ip_count = 1 # Start with a count of 1 for new IPs
+
+            if ip_address not in self.tracker_ip:
+                # First-time request from this IP — initialize tracking
+                self.tracker_ip[ip_address] = {
+                    "start_time":start_time,
+                    "ip_count":ip_count
+                }
+                print(f"First time: {ip_address}:{self.tracker_ip.get(ip_address)}")
+            else:
+                # Existing IP — increment the request count
                 current_time = datetime.now()
-                # Get the IP tracker
-                self.ip_count += 1
-                self.tracker_ip['ip_count'] = self.ip_count
-                print(self.tracker_ip)
-                if (current_time - self.tracker_ip.get('start_time')) > timedelta(minutes=1) and self.tracker_ip['ip_count'] > 5:
+                self.tracker_ip[ip_address]['ip_count'] += 1
+                logger.info(f"Ip already exists increment:{self.tracker_ip}")
+               
+                # Calculate the time difference from the first request
+                time_diff = current_time - self.tracker_ip[ip_address]['start_time']
+
+                # If too many requests within 1 minute, block the request
+                if time_diff < timedelta(minutes=1) and self.tracker_ip[ip_address].get('ip_count') > 5:
                     return HttpResponseForbidden("Sorry you have exceeded the number of request in a minute. Wait a minute and try again")
-                else:
-                    print("Keep sending")
+                
+                # If more than a minute has passed, reset count and timestamp
+                if time_diff > timedelta(minutes=1):
+                    self.tracker_ip[ip_address]['ip_count'] = 1
+                    self.tracker_ip[ip_address]['start_time'] = current_time
+                    
+        # Return the response from the view        
         return response
