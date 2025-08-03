@@ -11,12 +11,13 @@ class Message(models.Model):
     content = models.TextField(max_length=300)
     timestamp = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    is_edited = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['-timestamp']
 
     def __str__(self):
-        return f"Message: {self.content} was sent by {self.sender} to {self.reciever}"
+        return f"Message: {self.content} was sent by {self.sender} to {self.receiver}"
 
 class Notification(models.Model):
     message = models.ForeignKey(Message, on_delete=models.CASCADE, related_name="notifications")
@@ -26,3 +27,17 @@ class Notification(models.Model):
 
     def __str__(self):
         return f"Notification message {self.message.content} for user {self.recipient}"
+
+class MessageHistory(models.Model):
+    edited_sender = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="edited_sender")
+    edited_receiver = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="edited_receiver")
+    edited_content = models.TextField(max_length=300)
+    edited_timestamp = models.DateTimeField(auto_now=True)
+    edited_created_at = models.DateTimeField(auto_now_add=True)
+
+
+    class Meta:
+        ordering = ['-edited_timestamp']
+
+    def __str__(self):
+        return f"Message History: {self.edited_content} between sender {self.edited_sender} and reciever {self.edited_receiver}"
