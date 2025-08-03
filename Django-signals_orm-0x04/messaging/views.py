@@ -40,6 +40,14 @@ def delete_user(request, user_id):
         user.delete()
     return render(request, 'account_deleted.html')
 
+
+@login_required
+def inbox_view(request):
+    if request.user.is_authenticated:
+        ...
+        Message.ob
+    return render(request, 'inbox.html')
+
 @api_view(['GET'])
 # @permission_classes([AllowAny])
 def threaded_conversations(request):

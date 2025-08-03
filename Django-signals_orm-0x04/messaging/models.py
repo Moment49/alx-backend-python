@@ -15,6 +15,7 @@ class Message(models.Model):
     is_edited = models.BooleanField(default=False)
     read = models.BooleanField(default=False)
 
+    objects = models.Manager()  # The default manager.
     unread = UnreadMessagesManager()
 
     class Meta:
