@@ -12,6 +12,7 @@ class Message(models.Model):
     parent_message = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name="replies")
     timestamp = models.DateTimeField(auto_now_add=True)
     is_edited = models.BooleanField(default=False)
+    read = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['-timestamp']
