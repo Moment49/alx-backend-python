@@ -76,7 +76,7 @@
     {% if unread_messages %}
         {% for message in unread_messages %}
             <div class="message-card">
-                <div class="sender">From: {{ message.sender.username }}</div>
+                <div class="sender">From: {{ message.sender.first_name }}</div>
                 <div class="content">{{ message.content }}</div>
                 <div class="timestamp">{{ message.timestamp|date:"M d, Y - H:i" }}</div>
             </div>

@@ -43,10 +43,14 @@ def delete_user(request, user_id):
 
 @login_required
 def inbox_view(request):
-    if request.user.is_authenticated:
-        ...
-        Message.ob
-    return render(request, 'inbox.html')
+    # Fetch only unread messages for the logged-in user
+    # Use select_related to avoid N+1 queries for foreign key (sender)
+    # Use only() to limit loaded fields for performance
+    unread_messages = (Message.unread
+                        .unread_for_user(request.user)  #Custom manager method to filter by user and unread status
+                        .select_related('sender')    # Avoids extra query when accessing sender.username
+                        .only('sender', 'content', 'timestamp')) # Limits data pulled from DB
+    return render(request, 'inbox.html',  {"unread_messages":unread_messages})
 
 @api_view(['GET'])
 # @permission_classes([AllowAny])
