@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from .models import Message
 from .serializers import MessageSerializer
 from rest_framework.permissions import AllowAny
+from django.db.models import Prefetch
 
 # Create your views here.
 
@@ -44,10 +45,11 @@ def delete_user(request, user_id):
 def threaded_conversations(request):
     messages = Message.objects.filter(parent_message__isnull=True, sender=request.user) \
                               .select_related('sender', 'receiver') \
-                              .prefetch_related('replies')
+                              .prefetch_related(
+                                  Prefetch('replies', queryset=Message.objects.select_related('sender', 'reciever'))
+                              )
 
     serializer = MessageSerializer(messages, many=True)
-    print(serializer)
     return Response({"data": serializer.data})
 
 
