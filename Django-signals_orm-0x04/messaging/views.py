@@ -2,6 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
+from rest_framework.decorators import api_view,permission_classes
+from rest_framework.response import Response
+from .models import Message
+from .serializers import MessageSerializer
+from rest_framework.permissions import AllowAny
 
 # Create your views here.
 
@@ -34,3 +39,17 @@ def delete_user(request, user_id):
         # Delete user account
         user.delete()
     return render(request, 'account_deleted.html')
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def threaded_conversations(request):
+    messages = Message.objects.filter(parent_message__isnull=True) \
+                              .select_related('sender') \
+                              .prefetch_related('replies')
+
+    serializer = MessageSerializer(messages, many=True)
+    print(serializer)
+    return Response({"data": serializer.data})
+
+
+
