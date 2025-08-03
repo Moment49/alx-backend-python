@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from .managers import UnreadMessagesManager
 
 CustomUser = get_user_model()
 
@@ -12,7 +13,9 @@ class Message(models.Model):
     parent_message = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name="replies")
     timestamp = models.DateTimeField(auto_now_add=True)
     is_edited = models.BooleanField(default=False)
-    unread = models.BooleanField(default=True)
+    read = models.BooleanField(default=False)
+
+    unread = UnreadMessagesManager()
 
     class Meta:
         ordering = ['-timestamp']

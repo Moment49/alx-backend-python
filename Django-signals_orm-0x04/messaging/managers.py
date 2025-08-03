@@ -6,7 +6,7 @@ class UnreadMessagesManager(models.Manager):
     def get_queryset(self):
         # Override the base queryset to only return unread messages
         # Assumes you have a BooleanField named `read`
-        return super().get_queryset().filter(unread=True)
+        return super().get_queryset().filter(read=False)
 
     def unread_for_user(self, user):
         # Return unread messages specifically for the given user
