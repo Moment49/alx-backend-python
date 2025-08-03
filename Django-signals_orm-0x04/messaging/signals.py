@@ -25,7 +25,7 @@ def log_edited_messages(sender, instance, **kwargs):
             # Check if the curret message and olde message match if not save old message to history
 
             # Save the original message details to MessageHistory for record-keeping
-            message_history = MessageHistory.objects.create(edited_sender=instance.sender, 
+            message_history = MessageHistory.objects.create(edited_by=instance.sender, 
                                         edited_receiver=instance.receiver,edited_content=old_message.content)
             message_history.save()
 
