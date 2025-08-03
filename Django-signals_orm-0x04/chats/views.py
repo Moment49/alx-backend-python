@@ -16,6 +16,8 @@ from rest_framework_simplejwt.exceptions import AuthenticationFailed
 from rest_framework.authentication import SessionAuthentication
 from .pagination import CustomMessagePagination
 from .filters import MessageFilter
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
 
 
 
