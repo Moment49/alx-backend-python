@@ -8,7 +8,7 @@ class UnreadMessagesManager(models.Manager):
         # Assumes you have a BooleanField named `read`
         return super().get_queryset().filter(unread=True)
 
-    def for_user(self, user):
+    def unread_for_user(self, user):
         # Return unread messages specifically for the given user
         # Do NOT fetch a user object again — use the one passed in
         return self.get_queryset().filter(receiver=user)
