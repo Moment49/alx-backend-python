@@ -347,3 +347,11 @@ rest_framework.exceptions.PermissionDenied: {'Sorry you can not access the messa
 2025-07-29 15:41:05,744 2025-07-29 15:41:05.744255 - User: AnonymousUser - Path: /api/v1/auth/login
 2025-07-29 15:42:01,682 C:\Users\hp\Desktop\alx-backend-python\Django-Middleware-0x03\chats\middleware.py changed, reloading.
 2025-07-29 15:42:20,957 2025-07-29 15:42:20.957431 - User: AnonymousUser - Path: /api/v1/auth/login
+2025-07-29 15:47:59,625 2025-07-29 15:47:59.625443 - User: AnonymousUser - Path: /api/v1/auth/login
+2025-07-29 15:48:00,047 Unauthorized: /api/v1/auth/login
+2025-07-29 15:48:10,187 2025-07-29 15:48:10.187723 - User: AnonymousUser - Path: /api/v1/auth/login
+2025-07-29 15:48:10,191 Unauthorized: /api/v1/auth/login
+2025-07-29 15:48:13,990 2025-07-29 15:48:13.990436 - User: AnonymousUser - Path: /api/v1/auth/login
+2025-07-29 15:48:13,995 Unauthorized: /api/v1/auth/login
+2025-07-29 15:48:15,686 2025-07-29 15:48:15.686531 - User: AnonymousUser - Path: /api/v1/auth/login
+2025-07-29 15:48:15,688 Unauthorized: /api/v1/auth/login
