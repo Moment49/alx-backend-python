@@ -20,8 +20,10 @@ from chats.urls import router
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('messaging.urls')),
     path('api/v1/', include('chats.urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('', include(router.urls))
+    path('api/', include(router.urls)), #This is for the view for apis
+  
    
 ]

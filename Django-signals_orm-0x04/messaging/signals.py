@@ -1,6 +1,11 @@
 from django.dispatch import receiver
 from django.db.models.signals import post_save, post_delete, pre_save, pre_delete
 from .models import Message, Notification, MessageHistory
+from django.contrib.auth import get_user_model
+
+
+CustomUser = get_user_model()
+
 
 # Signal triggered after a Message is saved to the database
 @receiver(post_save, sender=Message)
@@ -33,4 +38,13 @@ def log_edited_messages(sender, instance, **kwargs):
             instance.is_edited = True
             print(f"This message {old_message.content} has been edited ")
             
+
+@receiver(post_delete, sender=CustomUser)
+def delete_user_notify(sender, instance, **kwargs):
+    # Delete all messages, notification and history
+    if instance:
+        Message.objects.filter(sender=instance).delete()
+        Notification.objects.filter(recipient=instance).delete()
+        MessageHistory.objects.filter(edited_by=instance).delete()
+        print(f"All the messages, notifications and message history for user {instance.first_name} has been deleted")
         
