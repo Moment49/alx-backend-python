@@ -40,9 +40,9 @@ def delete_user(request, user_id):
     return render(request, 'account_deleted.html')
 
 @api_view(['GET'])
-@permission_classes([AllowAny])
+# @permission_classes([AllowAny])
 def threaded_conversations(request):
-    messages = Message.objects.filter(parent_message__isnull=True) \
+    messages = Message.objects.filter(parent_message__isnull=True, sender=request.user) \
                               .select_related('sender', 'receiver') \
                               .prefetch_related('replies')
 
