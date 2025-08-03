@@ -1194,3 +1194,44 @@ NameError: name 'minutes' is not defined
 2025-07-31 09:07:10,253 Not Found: /api/v1/login
 2025-07-31 09:07:17,469 2025-07-31 09:07:17.466325 - User: martin@ymail.com - Path: /api/v1/auth/login
 2025-07-31 09:07:17,491 Method Not Allowed: /api/v1/auth/login
+2025-08-01 20:35:12,107 2025-08-01 20:35:12.106999 - User: AnonymousUser - Path: /
+2025-08-01 20:35:12,348 Unauthorized: /
+2025-08-01 20:35:14,215 2025-08-01 20:35:14.215732 - User: AnonymousUser - Path: /favicon.ico
+2025-08-01 20:35:14,247 Not Found: /favicon.ico
+2025-08-01 20:35:44,386 2025-08-01 20:35:44.386791 - User: AnonymousUser - Path: /api-auth/login/
+2025-08-01 20:35:45,936 2025-08-01 20:35:45.936532 - User: AnonymousUser - Path: /api-auth/login/
+2025-08-01 20:35:47,372 2025-08-01 20:35:47.366572 - User: martin@ymail.com - Path: /
+2025-08-01 20:36:03,338 2025-08-01 20:36:03.334785 - User: martin@ymail.com - Path: /message/
+2025-08-01 20:36:03,672 You can access the message/chats that belongs to you
+2025-08-01 20:56:27,944 2025-08-01 20:56:27.908100 - User: martin@ymail.com - Path: /
+2025-08-01 20:57:06,887 2025-08-01 20:57:06.877301 - User: martin@ymail.com - Path: /conversation/
+2025-08-01 20:58:12,535 2025-08-01 20:58:12.530032 - User: martin@ymail.com - Path: /conversation/
+2025-08-01 21:00:21,216 /home/moment/alx-backend-python/Django-Middleware-0x03/messaging_app/settings.py changed, reloading.
+2025-08-01 21:01:22,707 2025-08-01 21:01:22.707234 - User: AnonymousUser - Path: /api/v1/auth/login
+2025-08-01 21:01:35,903 2025-08-01 21:01:35.903720 - User: AnonymousUser - Path: /api/v1/auth/login
+2025-08-01 21:01:35,905 Method Not Allowed: /api/v1/auth/login
+2025-08-01 21:01:44,736 2025-08-01 21:01:44.736316 - User: AnonymousUser - Path: /api/v1/auth/login/
+2025-08-01 21:01:44,761 Not Found: /api/v1/auth/login/
+2025-08-01 21:02:06,324 2025-08-01 21:02:06.324100 - User: AnonymousUser - Path: /api/v1/auth/login
+2025-08-01 21:04:48,364 2025-08-01 21:04:48.364081 - User: AnonymousUser - Path: /api/v1/message/
+2025-08-01 21:04:48,527 First time: 127.0.0.1:{'start_time': datetime.datetime(2025, 8, 1, 21, 4, 48, 364658), 'ip_count': 1}
+2025-08-01 21:05:10,584 2025-08-01 21:05:10.584117 - User: AnonymousUser - Path: /api/v1/message/
+2025-08-01 21:05:10,721 First time: 102.216.203.145:{'start_time': datetime.datetime(2025, 8, 1, 21, 5, 10, 585212), 'ip_count': 1}
+2025-08-01 21:05:35,445 2025-08-01 21:05:35.445900 - User: AnonymousUser - Path: /api/v1/message/
+2025-08-01 21:05:35,507 Ip already exists increment:{'127.0.0.1': {'start_time': datetime.datetime(2025, 8, 1, 21, 4, 48, 364658), 'ip_count': 1}, '102.216.203.145': {'start_time': datetime.datetime(2025, 8, 1, 21, 5, 10, 585212), 'ip_count': 2}}
+2025-08-01 21:05:45,253 2025-08-01 21:05:45.253757 - User: AnonymousUser - Path: /api/v1/message/
+2025-08-01 21:05:45,380 Ip already exists increment:{'127.0.0.1': {'start_time': datetime.datetime(2025, 8, 1, 21, 4, 48, 364658), 'ip_count': 1}, '102.216.203.145': {'start_time': datetime.datetime(2025, 8, 1, 21, 5, 10, 585212), 'ip_count': 3}}
+2025-08-01 21:05:47,177 2025-08-01 21:05:47.177131 - User: AnonymousUser - Path: /api/v1/message/
+2025-08-01 21:05:47,233 Ip already exists increment:{'127.0.0.1': {'start_time': datetime.datetime(2025, 8, 1, 21, 4, 48, 364658), 'ip_count': 1}, '102.216.203.145': {'start_time': datetime.datetime(2025, 8, 1, 21, 5, 10, 585212), 'ip_count': 4}}
+2025-08-01 21:05:48,876 2025-08-01 21:05:48.876482 - User: AnonymousUser - Path: /api/v1/message/
+2025-08-01 21:05:48,925 Ip already exists increment:{'127.0.0.1': {'start_time': datetime.datetime(2025, 8, 1, 21, 4, 48, 364658), 'ip_count': 1}, '102.216.203.145': {'start_time': datetime.datetime(2025, 8, 1, 21, 5, 10, 585212), 'ip_count': 5}}
+2025-08-01 21:05:50,437 2025-08-01 21:05:50.437703 - User: AnonymousUser - Path: /api/v1/message/
+2025-08-01 21:05:50,495 Ip already exists increment:{'127.0.0.1': {'start_time': datetime.datetime(2025, 8, 1, 21, 4, 48, 364658), 'ip_count': 1}, '102.216.203.145': {'start_time': datetime.datetime(2025, 8, 1, 21, 5, 10, 585212), 'ip_count': 6}}
+2025-08-01 21:05:50,495 Sorry you have exceeded the number of request in a minute by Ip 102.216.203.145
+2025-08-01 21:05:50,496 Forbidden: /api/v1/message/
+2025-08-01 21:06:21,533 2025-08-01 21:06:21.533210 - User: AnonymousUser - Path: /api/v1/message/
+2025-08-01 21:06:21,672 Ip already exists increment:{'127.0.0.1': {'start_time': datetime.datetime(2025, 8, 1, 21, 4, 48, 364658), 'ip_count': 2}, '102.216.203.145': {'start_time': datetime.datetime(2025, 8, 1, 21, 5, 10, 585212), 'ip_count': 6}}
+2025-08-01 21:07:17,705 2025-08-01 21:07:17.705091 - User: AnonymousUser - Path: /api/v1/message/
+2025-08-01 21:07:17,768 Ip already exists increment:{'127.0.0.1': {'start_time': datetime.datetime(2025, 8, 1, 21, 6, 21, 672294), 'ip_count': 1}, '102.216.203.145': {'start_time': datetime.datetime(2025, 8, 1, 21, 5, 10, 585212), 'ip_count': 7}}
+2025-08-01 21:07:28,796 2025-08-01 21:07:28.796263 - User: AnonymousUser - Path: /api/v1/message/
+2025-08-01 21:07:28,965 Ip already exists increment:{'127.0.0.1': {'start_time': datetime.datetime(2025, 8, 1, 21, 6, 21, 672294), 'ip_count': 1}, '102.216.203.145': {'start_time': datetime.datetime(2025, 8, 1, 21, 7, 17, 768783), 'ip_count': 2}}
