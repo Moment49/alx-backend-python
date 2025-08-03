@@ -33,7 +33,6 @@ def dashboard_user(request):
 @login_required
 def delete_user(request, user_id):
     # check if the user matches
-    request.user.user_id 
     user = CustomUser.objects.get(email = request.user)
     if user_id == user.user_id:
         # Delete user account
@@ -44,7 +43,7 @@ def delete_user(request, user_id):
 @permission_classes([AllowAny])
 def threaded_conversations(request):
     messages = Message.objects.filter(parent_message__isnull=True) \
-                              .select_related('sender') \
+                              .select_related('sender', 'receiver') \
                               .prefetch_related('replies')
 
     serializer = MessageSerializer(messages, many=True)
