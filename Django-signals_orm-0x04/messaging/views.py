@@ -8,6 +8,8 @@ from .models import Message
 from .serializers import MessageSerializer
 from rest_framework.permissions import AllowAny
 from django.db.models import Prefetch
+from django.views.decorators.cache import cache_page
+
 
 # Create your views here.
 
@@ -42,6 +44,7 @@ def delete_user(request, user_id):
 
 
 @login_required
+@cache_page(60)
 def inbox_view(request):
     # Fetch only unread messages for the logged-in user
     # Use select_related to avoid N+1 queries for foreign key (sender)
@@ -49,8 +52,12 @@ def inbox_view(request):
     unread_messages = (Message.unread.unread_for_user(request.user)  #Custom manager method to filter by user and unread status
                         .select_related('sender')    # Avoids extra query when accessing sender.username
                         .only('sender', 'content', 'timestamp')) # Limits data pulled from DB
+    
     return render(request, 'inbox.html',  {"unread_messages":unread_messages})
 
+
+
+@cache_page(60 * 15)
 @api_view(['GET'])
 # @permission_classes([AllowAny])
 def threaded_conversations(request):

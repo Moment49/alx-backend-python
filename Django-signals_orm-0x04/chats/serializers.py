@@ -62,11 +62,11 @@ class MessageSerializer(serializers.ModelSerializer):
     message_id = serializers.UUIDField(read_only=True)
     sender = UserSerializer(read_only=True)
     conversation_ref = serializers.SerializerMethodField() 
-    conversation_id = serializers.UUIDField(write_only=True)
+    # conversation_id = serializers.UUIDField(write_only=True)
    
     class Meta:
         model = Message
-        fields = ['message_id', 'sender', 'message_body', 'conversation_ref', 'conversation_id']
+        fields = ['message_id', 'sender', 'message_body', 'conversation_ref']
         read_only_fields = ['message_id', 'conversation_ref']
     
     def get_conversation_ref(self, obj):
@@ -82,7 +82,9 @@ class MessageSerializer(serializers.ModelSerializer):
         """
         req_user = self.context.get("user")
         message_body = attrs.get("message_body")
-        conversation_id = attrs.get("conversation_id")
+        
+        # Get conversation_id from the view's kwargs
+        conversation_id = self.context["view"].kwargs.get("conversation_pk")
 
         # Check for empty message body
         if not message_body and message_body.strip() == "":
@@ -109,10 +111,9 @@ class MessageSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         # Pop the validated data 
         message_body = validated_data.pop("message_body")
-        conversation_id = validated_data.pop("conversation_id")
         
         # Create the message with the validated_data and return the message object added
-        message = Message.objects.create(message_body=message_body, conversation_id=conversation_id, **validated_data)
+        message = Message.objects.create(message_body=message_body, **validated_data)
         message.save()
         return message
     

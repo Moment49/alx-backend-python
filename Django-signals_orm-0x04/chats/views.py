@@ -16,8 +16,8 @@ from rest_framework_simplejwt.exceptions import AuthenticationFailed
 from rest_framework.authentication import SessionAuthentication
 from .pagination import CustomMessagePagination
 from .filters import MessageFilter
-from django.utils.decorators import method_decorator
-from django.views.decorators.cache import cache_page
+from rest_framework.exceptions import ValidationError
+from django.shortcuts import get_object_or_404
 
 
 
@@ -34,14 +34,24 @@ class MessageViewSet(viewsets.ModelViewSet):
     filterset_class = MessageFilter
     
     def perform_create(self, serializer):
-        # automatically pass the authenticated user as sender of the message 
-        serializer.save(sender=self.request.user)
+        conversation_id = self.kwargs.get('conversation_pk')
+        conversation = get_object_or_404(Conversation, conversation_id=conversation_id)
+
+        if self.request.user not in conversation.participants.all():
+            raise ValidationError("You are not a participant in this conversation.")
+
+        return serializer.save(sender=self.request.user, conversation=conversation)
     
     def get_queryset(self):
-        if self.action == 'list':
-            return  Message.objects.filter(conversation__participants= self.request.user).distinct()
+        print("kwargs:", self.kwargs)
+        conversation_pk = self.kwargs.get("conversation_pk")
+        if conversation_pk:
+            return  Message.objects.filter(conversation__participants= self.request.user,
+                                            conversation__conversation_id=conversation_pk).distinct()
         
-        Message.objects.all()
+        return Message.objects.filter(conversation__participants=self.request.user).distinct()
+        
+       
 
     def get_serializer_context(self):
         context = super().get_serializer_context()
