@@ -44,7 +44,6 @@ class UserSerializer(serializers.ModelSerializer):
        
         user = CustomUser.objects.create_user(email=email, **validated_data)
 
-
         user.save()
         return user
 

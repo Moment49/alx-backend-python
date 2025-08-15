@@ -51,7 +51,6 @@ class MessageViewSet(viewsets.ModelViewSet):
         
         return Message.objects.filter(conversation__participants=self.request.user).distinct()
         
-       
 
     def get_serializer_context(self):
         context = super().get_serializer_context()
