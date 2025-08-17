@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# kubctl-0x02: Blue-Green deployment script for Django app
+
+BLUE_DEPLOYMENT="messaging_app/blue_deployment.yaml"
+GREEN_DEPLOYMENT="messaging_app/green_deployment.yaml"
+SERVICE="messaging_app/kubeservice.yaml"
+
+echo "🚀 Deploying Blue version..."
+kubectl apply -f $BLUE_DEPLOYMENT
+
+echo "🚀 Deploying Green version..."
+kubectl apply -f $GREEN_DEPLOYMENT
+
+echo "🔹 Applying Service (initially pointing to Blue)..."
+kubectl apply -f $SERVICE
+
+# Wait a few seconds for pods to be ready
+sleep 5
+
+# Check pods for both versions
+echo "📦 Checking all pods..."
+kubectl get pods
+
+# Check logs for Green version pods
+echo "🔍 Checking logs for Green version..."
+GREEN_PODS=$(kubectl get pods -l version=green -o jsonpath="{.items[*].metadata.name}")
+for pod in $GREEN_PODS; do
+  echo "Logs for pod $pod:"
+  kubectl logs $pod
+done
+
+# Switch traffic to Green version (optional step for gradual rollout)
+echo "⚡ Switching service selector to Green..."
+kubectl patch svc django-messaging-service -p '{"spec":{"selector":{"app":"django-messaging","version":"green"}}}'
+
+echo "✅ Blue-Green deployment completed."
