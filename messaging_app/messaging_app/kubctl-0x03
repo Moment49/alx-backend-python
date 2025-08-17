@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# kubctl-0x03: Rolling update script for Django app
+
+DEPLOYMENT_NAME="django-messaging-blue"
+NAMESPACE="default"  # change if using different namespace
+
+echo "🚀 Applying updated deployment (Docker image 2.0)..."
+kubectl apply -f messaging_app/blue_deployment.yaml
+
+# Monitor rollout progress
+echo "🔹 Monitoring rolling update..."
+kubectl rollout status deployment/$DEPLOYMENT_NAME -n $NAMESPACE
+
+# Continuous testing using curl to check downtime
+echo "⚡ Testing app for downtime (press Ctrl+C to stop)..."
+while true; do
+  HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/)
+  if [ "$HTTP_CODE" -eq 200 ]; then
+    echo "$(date '+%T') - App is up ✅"
+  else
+    echo "$(date '+%T') - App might be down ❌ (HTTP $HTTP_CODE)"
+  fi
+  sleep 2
+done
+
+# After stopping curl, you can check pods
+# echo "📦 Current pods:"
+# kubectl get pods -n $NAMESPACE
