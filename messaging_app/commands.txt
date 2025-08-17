@@ -1,0 +1,17 @@
+# Start Minikube cluster
+minikube start
+
+# Enable Nginx Ingress controller
+minikube addons enable ingress
+
+# Check if Ingress controller pods are running
+kubectl get pods -n kube-system
+
+# Apply the Ingress resource
+kubectl apply -f messaging_app/ingress.yaml
+
+# Verify the Ingress was created successfully
+kubectl get ingress
+
+# (Optional) Tunnel for external access in Minikube
+minikube tunnel
