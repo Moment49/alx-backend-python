@@ -105,7 +105,7 @@ WSGI_APPLICATION = 'messaging_app.wsgi.application'
 #     }
 # }
 
-This is an alternative database to make use of in production
+# This is an alternative database to make use of in production
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
