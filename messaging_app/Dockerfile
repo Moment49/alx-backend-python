@@ -7,8 +7,11 @@ WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
+RUN apk update && apk add --no-cache python3-dev build-base mariadb-connector-c-dev pkgconfig
+
 # Copy requirements and install dependencies
 COPY requirements.txt /app/
+
 RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
 
 # Copy all your app code into the container
