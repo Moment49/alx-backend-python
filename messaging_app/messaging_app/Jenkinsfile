@@ -19,8 +19,8 @@ pipeline {
             steps {
                 // Creates an isolated Python environment
                 shiningPanda.python('Python 3') {
-                    sh 'pip install --upgrade pip'
-                    sh 'pip install -r messaging_app/requirements.txt'
+                    sh 'pip3 install --upgrade pip'
+                    sh 'pip3 install -r messaging_app/requirements.txt'
                 }
             }
         }
