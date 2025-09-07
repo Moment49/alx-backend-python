@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+
+    environment {
+        // Python virtualenv will be handled by ShiningPanda
+        GITHUB_CREDENTIALS = credentials('github-creds')
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/your-username/alx-backend-python.git',
+                    credentialsId: "${GITHUB_CREDENTIALS}"
+            }
+        }
+
+        stage('Setup Python') {
+            steps {
+                // Creates an isolated Python environment
+                shiningPanda.python('Python 3') {
+                    sh 'pip install --upgrade pip'
+                    sh 'pip install -r messaging_app/requirements.txt'
+                }
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                shiningPanda.python('Python 3') {
+                    sh 'pytest messaging_app/tests/ --junitxml=report.xml'
+                }
+            }
+            post {
+                always {
+                    junit 'report.xml'
+                }
+            }
+        }
+    }
+
+    triggers {
+        // Manual trigger only → no SCM polling
+    }
+}
