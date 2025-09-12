@@ -24,6 +24,7 @@ drf-nested-routers==0.94.2
 idna==3.10
 mysqlclient==2.1.1
 pycparser==2.22
+psycopg2-binary==2.9.10
 PyJWT==2.9.0
 Pygments==2.19.2
 requests==2.32.3

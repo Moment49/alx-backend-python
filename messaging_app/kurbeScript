@@ -1,2 +1,60 @@
 #!/bin/bash
-# KurbeScript - A script thats starts a kubernetes cluster
+
+# Starts a Kubernetes cluster on your machine
+# verifies that the cluster is running using  kubectl cluster-info.
+# Retrieves the available pods in the default namespace using kubectl get pods.
+# Ensure minikube is installed
+
+# Algorithm
+# Check if minikube is installed
+MINIKUBE_INSTALLATION_URL_WINDOWS=https://github.com/kubernetes/minikube/releases/latest/download/minikube-windows-amd64.exe
+MINIKUBE_INSTALLATION_URL_LINUX=https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64
+MINIKUBE_INSTALLATION_URL_MAC=https://github.com/kubernetes/minikube/releases/latest/download/minikube-darwin-amd64
+GENERAL_INSTALLATION_INSTRUCTIONS=https://minikube.sigs.k8s.io/docs/start/
+
+
+# Function to verify cluster
+verify_cluster() {
+    echo "✨ Verifying if cluster is running"
+    if kubectl cluster-info > /dev/null 2>&1; then
+        echo "👍 Cluster Running"
+        kubectl get pods --namespace=default
+    else
+        echo "❌ Cluster verification failed"
+        exit 1
+    fi
+}
+
+
+if  ! command -v minikube > /dev/null 2>&1; then
+    echo "Minikube does not exist we need to install it"
+    echo "For windows users please install this $MINIKUBE_INSTALLATION_URL_WINDOWS"
+    echo -e "For Mac users please install this using curl -LO $MINIKUBE_INSTALLATION_URL_MAC\n
+    && sudo install minikube-darwin-amd64 /usr/local/bin/minikube"
+    echo -e "For Linux users please install this $MINIKUBE_INSTALLATION_URL_LINUX\n&& sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64"
+    echo "For more information on installation please visit $GENERAL_INSTALLATION_INSTRUCTIONS"
+else
+    echo "Minikube is installed on system"
+    # Check if minikube is started and start it if not
+    IsRunning="false"
+    ClusterStatus=$(minikube status --format='{{.Host}}')
+    # Verify that minikube has started
+    if [[ "$ClusterStatus" == "Running" ]]; then
+        echo "Cluster started"
+        # Verify the cluster and return the default namespace
+        verify_cluster
+        IsRunning="true"
+
+    else
+        echo "Start the cluster"
+        # Check if the driver for the cluster is active "docker or VM"
+        minikube start --driver=docker
+        sleep 5
+        # Verify the cluster and return the default namespace
+        verify_cluster
+        IsRunning="true"
+
+    fi
+
+
+fi

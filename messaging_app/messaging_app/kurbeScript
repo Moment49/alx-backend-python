@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # kurbeScript: Setup and verify Kubernetes with Minikube
-
 # Step 1: Check if Minikube is installed
 if ! command -v minikube &> /dev/null
 then
