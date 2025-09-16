@@ -11,15 +11,20 @@ spec:
       labels:
         app: messaging-app-db
     spec:
+    # Set the volume for the containers
+      volumes:
+        - name: db-storage
+          persistentVolumeClaim:
+            claimName: db-pvc-claim
       containers:
       - name: messaging-app-db
-        image: mysql
+        image: mysql:8.0
         resources:
           requests:
-            memory: "64Mi"
-            cpu: "50m"
+            memory: "256Mi"
+            cpu: "100m"
           limits:
-            memory: "128Mi"
+            memory: "512Mi"
             cpu: "100m"
         ports:
         - containerPort: 3306
@@ -28,9 +33,17 @@ spec:
           valueFrom:
             secretKeyRef:
               name: messaging-app-db-secret
-              key: MYSQL_ROOT_PASSWORD
+              key: MYSQL_ROOT_PASSWORD  
+        - name: MYSQL_ROOT_HOST
+          value: "%" 
         - name: MYSQL_DATABASE
           valueFrom:
             configMapKeyRef:
               name: messaging-app-db-config
               key: MYSQL_DATABASE
+                
+        # a mount for db-data
+        volumeMounts:
+          - name: db-storage
+            mountPath: /var/lib/mysql
+     

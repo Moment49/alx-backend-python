@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: messaging-app-db-config
+data:
+  MYSQL_DATABASE: "messaging-app-db-service"
+  DATABASE_HOST: "messaging-app-db" # db service name
+  DATABASE_PORT: "3306"
+  DEBUG: "True"

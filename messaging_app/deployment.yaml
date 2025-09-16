@@ -3,7 +3,6 @@ kind: Deployment
 metadata:
   name: messaging-app
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: messaging-app
@@ -15,7 +14,7 @@ spec:
       containers:
       - name: messaging-app
         image: momentum49/messaging_app:1.0.0
-        imagePullPolicy: Never
+        imagePullPolicy: Always
         resources:
           requests:
             memory: "50Mi"
@@ -25,45 +24,52 @@ spec:
             cpu: "100m"
         ports:
         - containerPort: 8000
-          env:
-          - name: DATABASE_HOST
-            valueFrom:
-              configMapKeyRef:
-                name: messaging-app-db-config
-                key: DATABASE_HOST
+        env:
+        - name: DATABASE_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: messaging-app-db-config
+              key: DATABASE_HOST
 
-          - name: MYSQL_DATABASE
-            valueFrom:
-              configMapKeyRef:
-                name: messaging-app-db-config
-                key: MYSQL_DATABASE
+        - name: DATABASE_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: messaging-app-db-config
+              key: DATABASE_PORT
 
-          - name: MYSQL_PORT
-            valueFrom:
-              configMapKeyRef:
-                name: messaging-app-db-config
-                key: MYSQL_PORT
+        - name: MYSQL_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: messaging-app-db-config
+              key: MYSQL_DATABASE
 
-          - name: DEBUG
-            valueFrom:
-              configMapKeyRef:
-                name: messaging-app-db-config
-                key: DEBUG
+        - name: DEBUG
+          valueFrom:
+            configMapKeyRef:
+              name: messaging-app-db-config
+              key: DEBUG
 
-          - name: MYSQL_USER
-            valueFrom:
-              secretKeyRef:
-                name: messaging-app-db-secret
-                key: MYSQL_USER
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: messaging-app-db-secret
+              key: MYSQL_USER
 
-          - name: MYSQL_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: messaging-app-db-secret
-                key: MYSQL_PASSWORD
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: messaging-app-db-secret
+              key: MYSQL_PASSWORD
 
-          - name: SECRET_KEY
-            valueFrom:
-              secretKeyRef:
-                name: messaging-app-db-secret
-                key: SECRET_KEY
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: messaging-app-db-secret
+              key: MYSQL_ROOT_PASSWORD
+
+              
+        - name: SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: messaging-app-db-secret
+              key: SECRET_KEY
